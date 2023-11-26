@@ -1,0 +1,25 @@
+.footer {
+  display: flex;
+  width: 100%;
+  height: 10vh;
+  background-color: #1f1d1d;
+}
+
+.button__wrapper {
+  border-width: 1px 0 1px 1px;
+  border-style: solid;
+  border-color: grey;
+  width: calc(100vw / 4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button__wrapper>* {
+  font-size: 36px;
+  color: grey;
+}
+
+.button__wrapper:last-child {
+  border-right: 1px solid grey;
+}

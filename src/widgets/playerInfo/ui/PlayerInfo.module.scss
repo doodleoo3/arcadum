@@ -1,0 +1,54 @@
+.player__info {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 100%;
+  background-color: #5aa083;
+  height: calc((100vh - 100vw - 10vh - 10vh - 20px) / 2);
+  padding-bottom: 22px;
+}
+
+.top__side__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.top__side__wrapper>* {
+  background-color: #409d7e;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.player__info__wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.last__matches__wrapper {
+  position: absolute;
+  padding: 2px 0;
+  width: 100%;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #409d7e;
+}
+
+.last__matches__wrapper h3 {
+  color: #e52d2d;
+  -webkit-text-stroke: 0.2px white; /* Толщина и цвет обводки */
+  //text-stroke: 1px #FFFFFF;
+  margin: 0 10px;
+}
+
+.opponent {
+  background-color: #d58888;
+}
+
+.opponent .last__matches__wrapper, .opponent .top__side__wrapper>*{
+  background-color: #d77b7b;
+}

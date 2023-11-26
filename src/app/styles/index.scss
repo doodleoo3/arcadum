@@ -1,0 +1,13 @@
+@import "variables/global";
+@import "reset";
+
+.App {
+  font: var(--font-m);
+  color: var(--tg-theme-text-color);
+  background-color: var(--tg-theme-bg-color);
+  width: 100vw;
+}
+
+h1, h2, h3 {
+  font-weight: normal;
+}
