@@ -14,8 +14,8 @@ const PlayerInfo:FC<PlayerInfoProps> = ({isOpponent, playerName, lastMatches}) =
         <div className={`${styles.player__info} ${isOpponent ? styles.opponent : ""}`}>
             <div className={styles.top__side__wrapper}>
                 <div className={styles.player__info__wrapper}>
-                    <img className={styles.avatar} src="" alt=""/>
-                    <h3>{tg.initDataUnsafe?.user?.username}</h3>
+                    <img className={styles.avatar} src={tg.initDataUnsafe?.user?.photo_url} alt=""/>
+                    <h3>@{tg.initDataUnsafe?.user?.username}</h3>
                 </div>
                 {isOpponent
                     ? <Timer isOpponent={isOpponent}/>
