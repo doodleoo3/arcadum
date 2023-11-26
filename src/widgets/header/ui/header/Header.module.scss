@@ -6,6 +6,7 @@
   height: 6vh;
   color: var(--tg-theme-text-color);
   background-color: var(--tg-theme-button-color);
+  border-top: 1px solid var(--tg-theme-text-color);
 }
 
 .header>* {
