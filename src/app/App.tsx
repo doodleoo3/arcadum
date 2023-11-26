@@ -5,7 +5,7 @@ import {GameProvider} from "../widgets/game/board/lib/context/GameContext";
 import Header from "../widgets/header/ui/header/Header";
 import Footer from "../widgets/footer/ui/footer/Footer";
 
-const tg = window.Telegram.WebApp
+const tg = (window as any).Telegram.WebApp;
 function App() {
 
     useEffect(() => {

@@ -7,7 +7,7 @@ interface PlayerInfoProps {
     lastMatches?: string[]
 }
 
-const tg = window.Telegram.WebApp
+const tg = (window as any).Telegram.WebApp;
 
 const PlayerInfo:FC<PlayerInfoProps> = ({isOpponent, playerName, lastMatches}) => {
     return (
@@ -15,7 +15,7 @@ const PlayerInfo:FC<PlayerInfoProps> = ({isOpponent, playerName, lastMatches}) =
             <div className={styles.top__side__wrapper}>
                 <div className={styles.player__info__wrapper}>
                     <img className={styles.avatar} src="" alt=""/>
-                    <h3>{tg.username}</h3>
+                    <h3>{tg.initDataUnsafe?.user?.username}</h3>
                 </div>
                 {isOpponent
                     ? <Timer isOpponent={isOpponent}/>
@@ -29,7 +29,6 @@ const PlayerInfo:FC<PlayerInfoProps> = ({isOpponent, playerName, lastMatches}) =
                 <h3>L</h3>
                 <h3>L</h3>
             </div>
-
 
             {/*<h1>{playerName}</h1>*/}
 

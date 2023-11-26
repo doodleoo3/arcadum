@@ -13,12 +13,13 @@ declare module 'chessboardjs' {
     export default Chessboard;
 }
 
-interface TelegramWebApp {
-    initData: string;
-    ready: Function;
-    expand: Function;
-    username: string;
-}
+// interface TelegramWebApp {
+//     initData: string;
+//     ready: Function;
+//     expand: Function;
+//     username: string;
+//     photo_url: string;
+// }
 
 interface Window {
     Telegram: {
