@@ -49,7 +49,7 @@
 
 .last__matches__wrapper h3 {
   color: #e52d2d;
-  -webkit-text-stroke: 0.2px white; /* Толщина и цвет обводки */
+  -webkit-text-stroke: 0.2px var(--tg-theme-text-color); /* Толщина и цвет обводки */
   //text-stroke: 1px #FFFFFF;
   margin: 0 10px;
 }
