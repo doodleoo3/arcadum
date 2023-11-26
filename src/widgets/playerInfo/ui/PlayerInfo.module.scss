@@ -8,7 +8,9 @@
   background-color: #5aa083;
   height: calc((100vh - 100vw - 6vh - 6vh - 20px) / 2);
   padding-bottom: 22px;
-  border: 1px solid var(--tg-theme-text-color);
+  border-width: 1px 0 1px 0;
+  border-style: solid;
+  border-color: var(--tg-theme-text-color);
 }
 
 .top__side__wrapper {

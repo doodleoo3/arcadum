@@ -19,9 +19,9 @@
   display: block;
   width: 4vh;
   height: 4vh;
-  color: var(--tg-theme-button-text-color);
+  color: var(--tg-theme-text-color);
 }
 
 .button__wrapper:last-child {
-  border-right: 1px solid var(--tg-theme-button-text-color);
+  border-right: 1px solid var(--tg-theme-text-color);
 }
