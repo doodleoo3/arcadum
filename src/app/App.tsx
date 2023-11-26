@@ -7,19 +7,21 @@ import Footer from "../widgets/footer/ui/footer/Footer";
 
 const tg = window.Telegram.WebApp
 function App() {
+
     useEffect(() => {
         tg.ready();
+        tg.expand()
     }, []);
 
-  return (
-      <GameProvider>
-          <div className="App">
-              <Header/>
-              <GamePage/>
-              <Footer/>
-          </div>
-      </GameProvider>
-  );
+    return (
+        <GameProvider>
+            <div className="App">
+                <Header/>
+                <GamePage/>
+                <Footer/>
+            </div>
+        </GameProvider>
+      );
 }
 
 export default App;

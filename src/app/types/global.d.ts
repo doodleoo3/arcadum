@@ -14,8 +14,10 @@ declare module 'chessboardjs' {
 }
 
 interface TelegramWebApp {
-    initData: any;
+    initData: string;
     ready: Function;
+    expand: Function;
+    username: string;
 }
 
 interface Window {

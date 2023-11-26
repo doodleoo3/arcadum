@@ -7,13 +7,15 @@ interface PlayerInfoProps {
     lastMatches?: string[]
 }
 
+const tg = window.Telegram.WebApp
+
 const PlayerInfo:FC<PlayerInfoProps> = ({isOpponent, playerName, lastMatches}) => {
     return (
         <div className={`${styles.player__info} ${isOpponent ? styles.opponent : ""}`}>
             <div className={styles.top__side__wrapper}>
                 <div className={styles.player__info__wrapper}>
                     <img className={styles.avatar} src="" alt=""/>
-                    <h3>@TGUSERNAME</h3>
+                    <h3>{tg.username}</h3>
                 </div>
                 {isOpponent
                     ? <Timer isOpponent={isOpponent}/>

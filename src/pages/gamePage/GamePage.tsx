@@ -10,7 +10,6 @@ import {createBoard} from "../../widgets/game/board/lib/createBoard";
 import {types} from "../../widgets/game/board/lib/context/GameTypes";
 import {getGameOverState} from "../../widgets/game/board/lib/gameOver";
 
-
 const GamePage = () => {
     const { state} = useContext(GameContext)
     const [fen, setFen] = useState('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1');
