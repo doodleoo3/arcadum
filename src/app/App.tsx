@@ -4,14 +4,14 @@ import "./styles/index.scss"
 import {GameProvider} from "../widgets/game/board/lib/context/GameContext";
 import Header from "../widgets/header/ui/header/Header";
 import Footer from "../widgets/footer/ui/footer/Footer";
+import {useTelegram} from "../shared/lib/hooks/useTelegram";
 
-const tg = (window as any).Telegram.WebApp;
 function App() {
+    const {tg} = useTelegram()
 
     useEffect(() => {
         tg.ready();
         tg.expand()
-        console.log(tg.initDataUnsafe?.user?.photo_url)
     }, []);
 
     return (

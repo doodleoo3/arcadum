@@ -1,21 +1,31 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import Timer from "../../../entities/timer/ui/Timer";
 import styles from "./PlayerInfo.module.scss"
+import {useTelegram} from "../../../shared/lib/hooks/useTelegram";
 interface PlayerInfoProps {
     isOpponent?: boolean
     playerName?: string
     lastMatches?: string[]
 }
 
-const tg = (window as any).Telegram.WebApp;
-
 const PlayerInfo:FC<PlayerInfoProps> = ({isOpponent, playerName, lastMatches}) => {
+    const {tg, user} = useTelegram()
+    const [avatar, setAvatar] = useState('');
+
+    useEffect(() => {
+        if (tg.colorScheme === "light") {
+            setAvatar("public/assets/images/no-avatar-white.png")
+        } else {
+            setAvatar("public/assets/images/no-avatar-black.png")
+        }
+    }, [tg.colorScheme]);
+
     return (
         <div className={`${styles.player__info} ${isOpponent ? styles.opponent : ""}`}>
             <div className={styles.top__side__wrapper}>
                 <div className={styles.player__info__wrapper}>
-                    <img className={styles.avatar} src={tg.initDataUnsafe?.user?.photo_url} alt=""/>
-                    <h3>@{tg.initDataUnsafe?.user?.username}</h3>
+                    <img className={styles.avatar} src={user.photo_url ? user.photo_url : avatar} alt=""/>
+                    <h3>@{user.username}</h3>
                 </div>
                 {isOpponent
                     ? <Timer isOpponent={isOpponent}/>
