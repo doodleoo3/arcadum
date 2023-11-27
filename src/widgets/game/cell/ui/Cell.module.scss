@@ -27,7 +27,9 @@
 }
 
 .possible__move {
-  //background-color: var(--tg-theme-text-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
   background-color: var(--tg-theme-text-color);
   width: 25%;
   height: 25%;
