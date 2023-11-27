@@ -5,11 +5,19 @@ import styles from "./CreateGamePage.module.scss"
 const CreateGamePage = () => {
     const {tg} = useTelegram();
 
-    // useEffect(() => {
-    //     tg.MainButton.text("INVITE FRIENDS")
-    //     tg.MainButton.isVisible(true)
-    //     tg.MainButton.isActive(true)
-    // }, []);
+    useEffect(() => {
+        tg.MainButton.setParams({
+            text: "INVITE FRIENDS",
+            color: tg.themeParams.secondary_bg_color,
+            text_color: tg.themeParams.text_color,
+            is_active: true,
+            is_visible: true
+        })
+        // tg.MainButton.setText("INVITE FRIENDS")
+        // tg.MainButton.show()
+        // tg.MainButton.enable()
+        // tg.MainButton.themeParams.color()
+    }, []);
 
     return (
         <PageContainer>
@@ -20,7 +28,7 @@ const CreateGamePage = () => {
 
             <div className={styles.wrapper}>
                 <h1>YOUR INVITE CODE</h1>
-                <p>INVITE CODE</p>
+                <p className={styles.invite__code}>INVITE CODE</p>
             </div>
         </PageContainer>
     );

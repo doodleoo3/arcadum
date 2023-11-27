@@ -1,6 +1,14 @@
 .wrapper {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+
   background-color: var(--tg-theme-button-color);
   color: var(--tg-theme-text-color);
+
+  border-width: 1px 0 1px 0;
+  border-style: solid;
+  border-color: var(--tg-theme-text-color);
 }
 
 .wrapper>* {
