@@ -3,7 +3,7 @@ import GamePage from "../pages/gamePage/GamePage";
 import "./styles/index.scss"
 import {GameProvider} from "../widgets/game/board/lib/context/GameContext";
 import Header from "../widgets/header/ui/header/Header";
-import Footer from "../widgets/footer/ui/footer/Footer";
+import GamePageFooter from "../widgets/footer/ui/gamePageFooter/GamePageFooter";
 import {useTelegram} from "../shared/lib/hooks/useTelegram";
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
             <div className="App">
                 <Header/>
                 <GamePage/>
-                <Footer/>
+                {/*<GamePageFooter/>*/}
             </div>
         </GameProvider>
       );

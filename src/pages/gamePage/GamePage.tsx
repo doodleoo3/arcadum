@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
-import PageContainer from "../../shared/ui/pageContainer/PageContainer";
+import GamePageContainer from "../../shared/ui/gamePageContainer/GamePageContainer";
 import Board from "../../widgets/game/board/ui/Board";
 import {GameContext} from "../../widgets/game/board/lib/context/GameContext";
 import GameOverModal from "../../widgets/gameOverModal/ui/GameOverModal";
@@ -9,6 +9,7 @@ import {Chess, Square} from "chess.js";
 import {createBoard} from "../../widgets/game/board/lib/createBoard";
 import {types} from "../../widgets/game/board/lib/context/GameTypes";
 import {getGameOverState} from "../../widgets/game/board/lib/gameOver";
+import GamePageFooter from "../../widgets/footer/ui/gamePageFooter/GamePageFooter";
 
 const GamePage = () => {
     const { state} = useContext(GameContext)
@@ -112,7 +113,7 @@ const GamePage = () => {
     // }, [chess]);
 
     return (
-        <PageContainer>
+        <GamePageContainer>
             {state.gameOver
                 && <GameOverModal/>
             }
@@ -122,7 +123,9 @@ const GamePage = () => {
             <Board board={board} setFromPos={setFromPos} makeMove={makeMove} selectedCell={selectedCell}/>
 
             <PlayerInfo></PlayerInfo>
-        </PageContainer>
+
+            <GamePageFooter></GamePageFooter>
+        </GamePageContainer>
     );
 };
 
