@@ -11,6 +11,7 @@ function App() {
     useEffect(() => {
         tg.ready();
         tg.expand()
+        console.log(tg.initDataUnsafe?.user?.photo_url)
     }, []);
 
     return (
