@@ -18,6 +18,7 @@ const Cell:FC<CellProps> = ({cell, index, setFromPos, makeMove}) => {
     const light = isLightSquare(cell.pos, index);
 
     const { state }  = useContext(GameContext);
+
     const isPossibleMove = state.possibleMoves.includes(cell.pos);
 
     const color = cell.piece.toUpperCase() === cell.piece ? 'w' : 'b';
