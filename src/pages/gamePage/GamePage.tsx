@@ -24,6 +24,7 @@ const GamePage = () => {
     const [selectedCell, setSelectedCell] = useState<Square | null>(null);
 
     const [moveHistory, setMoveHistory] = useState<Array<{ white: string, black: string | null }>>([]);
+
     // const socket = io('localhost:5000');
 
     const updateMoveHistory = (move: string) => {

@@ -5,6 +5,7 @@ import {GameProvider} from "../widgets/game/board/lib/context/GameContext";
 import Header from "../widgets/header/ui/header/Header";
 import GamePageFooter from "../widgets/footer/ui/gamePageFooter/GamePageFooter";
 import {useTelegram} from "../shared/lib/hooks/useTelegram";
+import CreateGamePage from "../pages/createGamePage/CreateGamePage";
 
 function App() {
     const {tg} = useTelegram()
@@ -18,7 +19,8 @@ function App() {
         <GameProvider>
             <div className="App">
                 <Header/>
-                <GamePage/>
+                <CreateGamePage/>
+                {/*<GamePage/>*/}
                 {/*<GamePageFooter/>*/}
             </div>
         </GameProvider>
