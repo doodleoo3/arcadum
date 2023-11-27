@@ -44,7 +44,7 @@ const Cell:FC<CellProps> = ({cell, index, setFromPos, makeMove}) => {
                 ? 
                 light ? styles.dark : styles.light
                 :
-                light ? styles.dark  : styles.light
+                light ? styles.light : styles.dark
             }`}
             onClick={handleClick}
             onDrop={handleDrop}
