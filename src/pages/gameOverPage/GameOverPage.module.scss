@@ -1,23 +1,19 @@
-.modal {
-  position: absolute;
+.__blank {
+  width: 100vw;
+  height: 25vh;
+}
+
+.invite__code {
+  width: 100vw;
 
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 
-  top: 50%;
-  left: 50%;
-  width: 250px;
-  height: 500px;
-  margin-top: -250px;
-  margin-left: -125px;
-
-  border: 1px solid black;
-
-  background-color: grey;
-
-  z-index: 999;
-
+  background-color: var(--tg-theme-bg-color);
   text-align: center;
+
+  border-width: 1px 0 1px 0;
+  border-style: solid;
+  border-color: var(--tg-theme-text-color);
 }

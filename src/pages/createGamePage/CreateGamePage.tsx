@@ -21,7 +21,7 @@ const CreateGamePage = () => {
     return (
         <PageContainer>
             <PageContainerItem>
-                <h1>CREATE NEW GAME</h1>
+                <h1>CREATE A NEW GAME</h1>
                 <p>WITH YOUR FRIENDS</p>
             </PageContainerItem>
 
