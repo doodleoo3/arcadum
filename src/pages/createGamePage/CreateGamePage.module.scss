@@ -7,6 +7,8 @@
   background-color: var(--tg-theme-button-color);
   color: var(--tg-theme-text-color);
 
+  height: 25vh;
+
   border-width: 1px 0 1px 0;
   border-style: solid;
   border-color: var(--tg-theme-text-color);
@@ -16,8 +18,15 @@
   margin: 20px;
 }
 
+.__blank {
+  width: 100vw;
+  height: 25vh;
+}
+
 .invite__code {
   position: relative;
+
+  width: 100vw;
 
   display: flex;
   align-items: center;
@@ -25,10 +34,12 @@
 
   background-color: var(--tg-theme-bg-color);
   text-align: center;
-  width: 100vw;
+
   border-width: 1px 0 1px 0;
   border-style: solid;
   border-color: var(--tg-theme-text-color);
+
+  cursor: pointer;
 }
 
 .invite__code>*:last-child {
