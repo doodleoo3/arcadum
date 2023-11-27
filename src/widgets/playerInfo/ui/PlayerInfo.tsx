@@ -14,9 +14,9 @@ const PlayerInfo:FC<PlayerInfoProps> = ({isOpponent, playerName, lastMatches}) =
 
     useEffect(() => {
         if (tg.colorScheme === "light") {
-            setAvatar("public/assets/images/no-avatar-white.png")
+            setAvatar("/assets/images/no-avatar-white.png")
         } else {
-            setAvatar("public/assets/images/no-avatar-black.png")
+            setAvatar("/assets/images/no-avatar-black.png")
         }
     }, [tg.colorScheme]);
 
