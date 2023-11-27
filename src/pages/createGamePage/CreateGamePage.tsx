@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import PageContainer from "../../shared/ui/pageContainer/PageContainer";
 import {useTelegram} from "../../shared/lib/hooks/useTelegram";
 import styles from "./CreateGamePage.module.scss"
+import {faCopy} from "@fortawesome/free-regular-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 const CreateGamePage = () => {
     const {tg} = useTelegram();
 
@@ -28,7 +30,7 @@ const CreateGamePage = () => {
 
             <div className={styles.wrapper}>
                 <h1>YOUR INVITE CODE</h1>
-                <p className={styles.invite__code}>INVITE CODE</p>
+                <p className={styles.invite__code}>INVITE CODE <FontAwesomeIcon icon={faCopy}/></p>
             </div>
         </PageContainer>
     );
