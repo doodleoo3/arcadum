@@ -5,6 +5,7 @@ import styles from "./Cell.module.scss"
 import CellPiece from "../../cellPiece/ui/CellPiece";
 import {Square} from "chess.js";
 import {GameContext} from "../../board/lib/context/GameContext";
+import {useTelegram} from "../../../../shared/lib/hooks/useTelegram";
 
 interface CellProps {
     cell: CellModel
@@ -34,9 +35,17 @@ const Cell:FC<CellProps> = ({cell, index, setFromPos, makeMove}) => {
         makeMove(cell.pos);
     };
 
+    const {tg} = useTelegram()
+
     return (
         <div
-            className={`${styles.cell} ${light ? styles.light : styles.dark}`}
+            className={`${styles.cell} 
+            ${tg.colorScheme === "light" 
+                ? 
+                light ? styles.dark: styles.light
+                :
+                light ? styles.light : styles.dark
+            }`}
             onClick={handleClick}
             onDrop={handleDrop}
             onDragOver={(e) => e.preventDefault()}

@@ -8,11 +8,11 @@
 }
 
 .light {
-  background-color: #232e3c;
+  background-color: var(--tg-theme-secondary-bg-color);
 }
 
 .dark {
-  background-color: #17212b;
+  background-color: var(--tg-theme-bg-color);
 }
 
 .overlay {
