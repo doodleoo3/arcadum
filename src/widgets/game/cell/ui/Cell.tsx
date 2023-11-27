@@ -42,9 +42,9 @@ const Cell:FC<CellProps> = ({cell, index, setFromPos, makeMove}) => {
             className={`${styles.cell} 
             ${tg.colorScheme === "light" 
                 ? 
-                light ? styles.dark: styles.light
+                light ? styles.dark : styles.light
                 :
-                light ? styles.light : styles.dark
+                light ? styles.dark  : styles.light
             }`}
             onClick={handleClick}
             onDrop={handleDrop}

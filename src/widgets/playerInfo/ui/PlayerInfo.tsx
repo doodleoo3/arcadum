@@ -19,7 +19,7 @@ const PlayerInfo:FC<PlayerInfoProps> = ({isOpponent, playerName, lastMatches}) =
         } else {
             setAvatar("/assets/images/no-avatar-white.png")
         }
-    }, [tg.colorScheme]);
+    }, [tg]);
 
     return (
         <div className={`${styles.player__info} ${isOpponent ? styles.opponent : ""}`}>
