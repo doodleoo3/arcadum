@@ -28,7 +28,9 @@
 
 .possible__move {
   //background-color: var(--tg-theme-text-color);
-  background-color: red;
+  background-color: var(--tg-theme-text-color);
+  width: 25%;
+  height: 25%;
   border-radius: 50%;
   opacity: 0.85;
 }
