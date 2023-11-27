@@ -9,11 +9,11 @@ const AppRouter = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<CreateGamePage/>}/>
-                <Route path="/game_over" element={<GameOverPage/>} />
-                <Route path="/join" element={<JoinGamePage/>} />
-                <Route path="/create" element={<CreateGamePage/>} />
-                <Route path="/game" element={<GamePage/>} />
+                {/*<Route path="/" element={<CreateGamePage/>}/>*/}
+                <Route index path="/game_over" element={<GameOverPage/>} />
+                <Route index path="/join" element={<JoinGamePage/>} />
+                <Route index path="/create" element={<CreateGamePage/>} />
+                <Route index path="/game" element={<GamePage/>} />
             </Routes>
         </BrowserRouter>
     );
