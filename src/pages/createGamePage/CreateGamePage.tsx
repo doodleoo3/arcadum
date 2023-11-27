@@ -4,6 +4,7 @@ import {useTelegram} from "../../shared/lib/hooks/useTelegram";
 import styles from "./CreateGamePage.module.scss"
 import {faCopy} from "@fortawesome/free-regular-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import PageContainerItem from "../../entities/pageContainerItem/PageContainerItem";
 const CreateGamePage = () => {
     const {tg} = useTelegram();
 
@@ -15,23 +16,19 @@ const CreateGamePage = () => {
             is_active: true,
             is_visible: true
         })
-        // tg.MainButton.setText("INVITE FRIENDS")
-        // tg.MainButton.show()
-        // tg.MainButton.enable()
-        // tg.MainButton.themeParams.color()
     }, []);
 
     return (
         <PageContainer>
-            <div className={styles.wrapper}>
+            <PageContainerItem>
                 <h1>CREATE NEW GAME</h1>
                 <p>WITH YOUR FRIENDS</p>
-            </div>
+            </PageContainerItem>
 
-            <div className={styles.wrapper}>
+            <PageContainerItem>
                 <h1>YOUR INVITE CODE</h1>
                 <p className={styles.invite__code}>INVITE CODE <FontAwesomeIcon icon={faCopy}/></p>
-            </div>
+            </PageContainerItem>
 
             <div className={styles.__blank}></div>
         </PageContainer>

@@ -1,0 +1,23 @@
+.item {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: var(--tg-theme-button-color);
+  color: var(--tg-theme-text-color);
+
+  height: 25vh;
+
+  border-width: 1px 0 1px 0;
+  border-style: solid;
+  border-color: var(--tg-theme-text-color);
+}
+
+.item:first-child {
+  border-top: none;
+}
+
+.item>* {
+  margin: 20px;
+}

@@ -1,7 +1,7 @@
 import React, {FC, useEffect, useState} from 'react';
-import Timer from "../../../entities/timer/ui/Timer";
+import Timer from "../../../../entities/timer/ui/Timer";
 import styles from "./PlayerInfo.module.scss"
-import {useTelegram} from "../../../shared/lib/hooks/useTelegram";
+import {useTelegram} from "../../../../shared/lib/hooks/useTelegram";
 interface PlayerInfoProps {
     isOpponent?: boolean
     playerName?: string

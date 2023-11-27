@@ -1,9 +1,9 @@
 import React, {FC, useEffect, useRef} from 'react';
-import styles from "./Sidebar.module.scss"
+import styles from "./MovesList.module.scss"
 interface SidebarProps {
     moveHistory: Array<{ white: string, black: string | null }>
 }
-const Sidebar:FC<SidebarProps> = ({moveHistory}) => {
+const MovesList:FC<SidebarProps> = ({moveHistory}) => {
     const sidebarRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -23,4 +23,4 @@ const Sidebar:FC<SidebarProps> = ({moveHistory}) => {
     );
 };
 
-export default Sidebar;
+export default MovesList;

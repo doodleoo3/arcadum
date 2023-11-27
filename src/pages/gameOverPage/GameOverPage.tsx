@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {GameContext} from "../../game/board/lib/context/GameContext";
-import styles from "./GameOverModal.module.scss"
-const GameOverModal = () => {
+import styles from "./GameOverPage.module.scss"
+import {GameContext} from "../../widgets/game/board/lib/context/GameContext";
+const GameOverPage = () => {
     const {state} = useContext(GameContext)
 
     const [winner, setWinner] = useState<string | null>(null)
@@ -27,4 +27,4 @@ const GameOverModal = () => {
     );
 };
 
-export default GameOverModal;
+export default GameOverPage;

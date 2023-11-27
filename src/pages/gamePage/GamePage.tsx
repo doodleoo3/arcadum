@@ -2,9 +2,8 @@ import React, {useContext, useEffect, useRef, useState} from 'react';
 import GamePageContainer from "../../shared/ui/gamePageContainer/GamePageContainer";
 import Board from "../../widgets/game/board/ui/Board";
 import {GameContext} from "../../widgets/game/board/lib/context/GameContext";
-import GameOverModal from "../../widgets/gameOverModal/ui/GameOverModal";
-import PlayerInfo from "../../widgets/playerInfo/ui/PlayerInfo";
-import Sidebar from "../../widgets/sidebar/ui/Sidebar";
+import PlayerInfo from "../../widgets/game/playerInfo/ui/PlayerInfo";
+import MovesList from "../../widgets/game/movesList/ui/MovesList";
 import {Chess, Square} from "chess.js";
 import {createBoard} from "../../widgets/game/board/lib/createBoard";
 import {types} from "../../widgets/game/board/lib/context/GameTypes";
@@ -115,10 +114,10 @@ const GamePage = () => {
 
     return (
         <GamePageContainer>
-            {state.gameOver
-                && <GameOverModal/>
-            }
-            <Sidebar moveHistory={moveHistory}/>
+            {/*{state.gameOver*/}
+            {/*    && <GameOverModal/>*/}
+            {/*}*/}
+            <MovesList moveHistory={moveHistory}/>
             <PlayerInfo isOpponent={true}></PlayerInfo>
 
             <Board board={board} setFromPos={setFromPos} makeMove={makeMove} selectedCell={selectedCell}/>
