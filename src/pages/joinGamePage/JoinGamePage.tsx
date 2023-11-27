@@ -44,6 +44,7 @@ const JoinGamePage = () => {
 
             <div className={styles.__blank}></div>
         </PageContainer>
+
         // <div>
         //     <h2>Play Chess with your friends online</h2>
         //     <form onSubmit={handleSubmit}>
