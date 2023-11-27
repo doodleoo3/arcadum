@@ -8,7 +8,7 @@ import CreateGamePage from "../../pages/createGamePage/CreateGamePage";
 const AppRouter = () => {
     return (
         <Routes>
-            <Route index path="/" element={<CreateGamePage/>}/>
+            {/*<Route index path="/" element={<CreateGamePage/>}/>*/}
             <Route path="/game_over" element={<GameOverPage/>} />
             <Route path="/join" element={<JoinGamePage/>} />
             <Route path="/create" element={<CreateGamePage/>} />
