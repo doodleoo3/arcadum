@@ -26,18 +26,18 @@
   align-items: center;
 }
 
-.possible__move {
-  position: absolute;
-  top: calc(50% - 5px);
-  left: calc(50% - 5px);
-  background-color: var(--tg-theme-text-color);
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  opacity: 0.5;
-
-  z-index: 999;
-}
+//.possible__move {
+//  position: absolute;
+//  top: calc(50% - 5px);
+//  left: calc(50% - 5px);
+//  background-color: var(--tg-theme-text-color);
+//  width: 10px;
+//  height: 10px;
+//  border-radius: 50%;
+//  opacity: 0.5;
+//
+//  z-index: 999;
+//}
 
 .check {
   background-color: red;

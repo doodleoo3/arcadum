@@ -5,8 +5,9 @@ interface CellPieceProps {
     name: string
     pos: Square
     setFromPos: (pos: Square) => void
+    isPossibleMove: boolean
 }
-const CellPiece:FC<CellPieceProps> = ({name, pos, setFromPos}) => {
+const CellPiece:FC<CellPieceProps> = ({name, pos, setFromPos, isPossibleMove}) => {
     const color = name === name.toUpperCase() ? 'w' : 'b';
     const imageName = `${color}${name.toUpperCase()}`;
     const element = useRef<HTMLImageElement>(null);
@@ -42,24 +43,18 @@ const CellPiece:FC<CellPieceProps> = ({name, pos, setFromPos}) => {
         <div
             className={styles.piece}
             style={{
-                background: `url(${image}) center center/cover`,
+                backgroundImage: `url(${image})`,
+                backgroundPosition: 'center',
+                backgroundSize: 'cover'
             }}
             ref={element}
             draggable={true}
             onClick={handleClick}
             onDragStart={handleDragStart}
             onDragEnd={handleDragEnd}
-        />
-        // <img
-        //     className={styles.piece}
-        //     src={image}
-        //     alt=""
-        //     ref={element}
-        //     draggable={true}
-        //     onClick={handleClick}
-        //     onDragStart={handleDragStart}
-        //     onDragEnd={handleDragEnd}
-        // />
+        >
+            {isPossibleMove && <div className={styles.possible__move}></div>}
+        </div>
     );
 };
 

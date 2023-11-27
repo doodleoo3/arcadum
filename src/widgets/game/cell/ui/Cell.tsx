@@ -52,9 +52,9 @@ const Cell:FC<CellProps> = ({cell, index, setFromPos, makeMove}) => {
             onDragOver={(e) => e.preventDefault()}
         >
             <div
-                className={`${styles.overlay} ${isPossibleMove ? styles.possible__move : ""} ${inCheck() && styles.check}`}
+                className={`${styles.overlay} ${inCheck() && styles.check}`}
             >
-                <CellPiece pos={cell.pos} name={cell.piece} setFromPos={setFromPos} />
+                <CellPiece pos={cell.pos} name={cell.piece} setFromPos={setFromPos} isPossibleMove={isPossibleMove} />
             </div>
         </div>
     );
