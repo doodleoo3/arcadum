@@ -7,6 +7,7 @@ import GamePageFooter from "../widgets/footer/ui/gamePageFooter/GamePageFooter";
 import {useTelegram} from "../shared/lib/hooks/useTelegram";
 import CreateGamePage from "../pages/createGamePage/CreateGamePage";
 import AppRouter from "./router/AppRouter";
+import {BrowserRouter} from "react-router-dom";
 
 function App() {
     const {tg} = useTelegram()
@@ -17,14 +18,14 @@ function App() {
     }, []);
 
     return (
-        <GameProvider>
-            <div className="App">
-                <Header/>
-                <AppRouter/>
-                {/*<GamePage/>*/}
-                {/*<GamePageFooter/>*/}
-            </div>
-        </GameProvider>
+        <BrowserRouter>
+            <GameProvider>
+                <div className="App">
+                    <Header/>
+                    <AppRouter/>
+                </div>
+            </GameProvider>
+        </BrowserRouter>
       );
 }
 
