@@ -5,11 +5,11 @@ import styles from "./CreateGamePage.module.scss"
 const CreateGamePage = () => {
     const {tg} = useTelegram();
 
-    useEffect(() => {
-        tg.MainButton.text("INVITE FRIENDS")
-        tg.MainButton.isVisible(true)
-        tg.MainButton.isActive(true)
-    }, []);
+    // useEffect(() => {
+    //     tg.MainButton.text("INVITE FRIENDS")
+    //     tg.MainButton.isVisible(true)
+    //     tg.MainButton.isActive(true)
+    // }, []);
 
     return (
         <PageContainer>
