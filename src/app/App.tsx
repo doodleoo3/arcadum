@@ -18,12 +18,14 @@ function App() {
     }, []);
 
     return (
-        <GameProvider>
-            <div className="App">
-                <Header/>
-                <AppRouter/>
-            </div>
-        </GameProvider>
+        <BrowserRouter>
+            <GameProvider>
+                <div className="App">
+                    <Header/>
+                    <AppRouter/>
+                </div>
+            </GameProvider>
+        </BrowserRouter>
       );
 }
 
