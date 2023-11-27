@@ -27,18 +27,14 @@
 }
 
 .possible__move {
-  background-image: var(--tg-theme-text-color);
+  //background-color: var(--tg-theme-text-color);
+  background-color: red;
   border-radius: 50%;
-  opacity: 0.5;
+  opacity: 0.85;
 }
 
 .check {
-  background-image: linear-gradient(
-                  to right,
-                  #f66f88 0%,
-                  #ee5574 19%,
-                  #f8444d 60%,
-                  #eb7b6a 100%
-  );
+  background-color: red;
+  opacity: 0.5;
 }
 
