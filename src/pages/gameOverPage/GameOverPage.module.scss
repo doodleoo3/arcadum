@@ -6,6 +6,8 @@
 .invite__code {
   width: 100vw;
 
+  color: var(--tg-theme-text-color);
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,6 +15,7 @@
   background-color: var(--tg-theme-bg-color);
   text-align: center;
 
+  outline:none;
   border-width: 1px 0 1px 0;
   border-style: solid;
   border-color: var(--tg-theme-text-color);

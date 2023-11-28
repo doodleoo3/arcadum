@@ -2,8 +2,6 @@ import React, {useContext, useEffect, useState} from 'react';
 import styles from "./GameOverPage.module.scss"
 import {GameContext} from "../../widgets/game/board/lib/context/GameContext";
 import PageContainerItem from "../../entities/pageContainerItem/PageContainerItem";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCopy} from "@fortawesome/free-regular-svg-icons";
 import PageContainer from "../../shared/ui/pageContainer/PageContainer";
 import {useTelegram} from "../../shared/lib/hooks/useTelegram";
 const GameOverPage = () => {
@@ -41,7 +39,7 @@ const GameOverPage = () => {
             </PageContainerItem>
 
             <PageContainerItem>
-                <h1>{user.username} WON</h1>
+                <h1>@{user.username} WON FOR {winner?.toUpperCase()}</h1>
                 <p>YOU CAN START A NEW GAME BY CLICKING THE BUTTON BELOW</p>
             </PageContainerItem>
 

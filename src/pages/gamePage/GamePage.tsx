@@ -9,6 +9,7 @@ import {createBoard} from "../../widgets/game/board/lib/createBoard";
 import {types} from "../../widgets/game/board/lib/context/GameTypes";
 import {getGameOverState} from "../../widgets/game/board/lib/gameOver";
 import GamePageFooter from "../../widgets/footer/ui/gamePageFooter/GamePageFooter";
+import {useLocation, useNavigate} from 'react-router-dom';
 
 const GamePage = () => {
     const { state} = useContext(GameContext)
@@ -86,6 +87,8 @@ const GamePage = () => {
         });
     }, [fen, dispatch, chess]);
 
+
+
     // useEffect(() => {
     //     socket.emit('join', { name: 'Frank', gameID: '20' }, (response: { error?: string, color?: "w" | "b"  }) => {
     //         if (response.error) {
@@ -111,6 +114,16 @@ const GamePage = () => {
     //         console.log({ message });
     //     });
     // }, [chess]);
+
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    useEffect(() => {
+        if (state.gameOver) {
+            navigate("/game_over")
+        }
+    }, [state]);
+
 
     return (
         <GamePageContainer>
