@@ -12,10 +12,10 @@ import {BrowserRouter} from "react-router-dom";
 function App() {
     const {tg} = useTelegram()
 
-    useEffect(() => {
-        tg.ready();
-        tg.expand()
-    }, []);
+    // useEffect(() => {
+    //     tg.ready();
+    //     tg.expand()
+    // }, []);
 
     return (
             <GameProvider>

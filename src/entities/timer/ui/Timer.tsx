@@ -1,37 +1,23 @@
 import React, {FC, useContext, useEffect, useRef, useState} from 'react';
 import {GameContext} from "../../../widgets/game/board/lib/context/GameContext";
 import {types} from "../../../widgets/game/board/lib/context/GameTypes";
-import {useNavigate} from "react-router-dom";
 
 interface TimerProps {
     isOpponent?: boolean
 }
 const Timer:FC<TimerProps> = ({isOpponent}) => {
-    const [blackTime, setBlackTime] = useState(60);
-    const [whiteTime, setWhiteTime] = useState(60);
+    const [blackTime, setBlackTime] = useState(300);
+    const [whiteTime, setWhiteTime] = useState(300);
     const timer = useRef<null | ReturnType<typeof setInterval>>(null)
 
     const {state, dispatch} = useContext(GameContext)
 
-    const navigate = useNavigate()
 
     function decrementBlackTimer() {
-        if (blackTime === 0) {
-            dispatch({ type: types.GAME_OVER, status: 'end of time', player: 'b' });
-            if (state.gameOver) {
-                navigate("/game_over")
-            }
-        }
         setBlackTime(prev => prev -1)
     }
 
     function decrementWhiteTimer() {
-        if (whiteTime === 0) {
-            dispatch({ type: types.GAME_OVER, status: 'timeOver', player: 'w' });
-            if (state.gameOver) {
-                navigate("/game_over")
-            }
-        }
         setWhiteTime(prev => prev -1)
     }
 
@@ -47,6 +33,11 @@ const Timer:FC<TimerProps> = ({isOpponent}) => {
         startTimer()
     }, [state.turn]);
 
+    useEffect(() => {
+        if (whiteTime === 0 || blackTime === 0) {
+            dispatch({ type: types.GAME_OVER, status: 'end of time', player: state.turn });
+        }
+    }, [whiteTime, blackTime]);
 
     if (isOpponent) {
         return <h3>{`${Math.floor(blackTime / 60)} : ${blackTime % 60 < 10 ? `0${blackTime % 60}` : blackTime % 60}`}</h3>

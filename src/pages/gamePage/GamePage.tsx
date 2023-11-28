@@ -121,6 +121,7 @@ const GamePage = () => {
 
     useEffect(() => {
         if (state.gameOver) {
+            localStorage.setItem('status', state.status)
             navigate("/game_over")
         }
     }, [state]);
