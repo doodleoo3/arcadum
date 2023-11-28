@@ -45,13 +45,6 @@ const GameOverPage = () => {
 
             <div className={styles.__blank}></div>
         </PageContainer>
-
-        // <div className={styles.modal}>
-        //     <h1>GAME OVER</h1>
-        //     <p>THE GAME ENDED IN A {state.status.toUpperCase()}</p>
-        //     {winner && <p>{winner.toUpperCase()} WON</p>}
-        //     <button>PLAY AGAIN</button>
-        // </div>
     );
 };
 

@@ -9,7 +9,7 @@ import {createBoard} from "../../widgets/game/board/lib/createBoard";
 import {types} from "../../widgets/game/board/lib/context/GameTypes";
 import {getGameOverState} from "../../widgets/game/board/lib/gameOver";
 import GamePageFooter from "../../widgets/footer/ui/gamePageFooter/GamePageFooter";
-import {useLocation, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 const GamePage = () => {
     const { state} = useContext(GameContext)
@@ -76,10 +76,12 @@ const GamePage = () => {
 
     useEffect(() => {
         const [gameOver, status] = getGameOverState(chess);
+
         if (gameOver) {
             dispatch({ type: types.GAME_OVER, status, player: chess.turn() });
             return;
         }
+
         dispatch({
             type: types.SET_TURN,
             player: chess.turn(),
@@ -116,7 +118,6 @@ const GamePage = () => {
     // }, [chess]);
 
     const navigate = useNavigate()
-    const location = useLocation()
 
     useEffect(() => {
         if (state.gameOver) {

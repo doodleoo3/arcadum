@@ -1,21 +1,28 @@
 import React, {FC, useContext, useEffect, useRef, useState} from 'react';
 import {GameContext} from "../../../widgets/game/board/lib/context/GameContext";
+import {types} from "../../../widgets/game/board/lib/context/GameTypes";
 
 interface TimerProps {
     isOpponent?: boolean
 }
 const Timer:FC<TimerProps> = ({isOpponent}) => {
-    const [blackTime, setBlackTime] = useState(300);
-    const [whiteTime, setWhiteTime] = useState(300);
+    const [blackTime, setBlackTime] = useState(60);
+    const [whiteTime, setWhiteTime] = useState(60);
     const timer = useRef<null | ReturnType<typeof setInterval>>(null)
 
-    const {state} = useContext(GameContext)
+    const {state, dispatch} = useContext(GameContext)
 
     function decrementBlackTimer() {
+        if (blackTime <= 0) {
+            dispatch({ type: types.GAME_OVER, status: 'end of time', player: 'b' });
+        }
         setBlackTime(prev => prev -1)
     }
 
     function decrementWhiteTimer() {
+        if (whiteTime <= 0) {
+            dispatch({ type: types.GAME_OVER, status: 'timeOver', player: 'w' });
+        }
         setWhiteTime(prev => prev -1)
     }
 
