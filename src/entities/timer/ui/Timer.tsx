@@ -1,6 +1,7 @@
 import React, {FC, useContext, useEffect, useRef, useState} from 'react';
 import {GameContext} from "../../../widgets/game/board/lib/context/GameContext";
 import {types} from "../../../widgets/game/board/lib/context/GameTypes";
+import {useNavigate} from "react-router-dom";
 
 interface TimerProps {
     isOpponent?: boolean
@@ -12,9 +13,12 @@ const Timer:FC<TimerProps> = ({isOpponent}) => {
 
     const {state, dispatch} = useContext(GameContext)
 
+    const navigate = useNavigate()
+
     function decrementBlackTimer() {
         if (blackTime <= 0) {
             dispatch({ type: types.GAME_OVER, status: 'end of time', player: 'b' });
+            navigate("/game_over")
         }
         setBlackTime(prev => prev -1)
     }
@@ -22,6 +26,7 @@ const Timer:FC<TimerProps> = ({isOpponent}) => {
     function decrementWhiteTimer() {
         if (whiteTime <= 0) {
             dispatch({ type: types.GAME_OVER, status: 'timeOver', player: 'w' });
+            navigate("/game_over")
         }
         setWhiteTime(prev => prev -1)
     }
