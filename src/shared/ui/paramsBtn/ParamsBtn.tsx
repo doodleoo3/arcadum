@@ -5,9 +5,9 @@ interface ParamsBtn {
     isActive?: boolean
     onClick: () => void
 }
-const ParamsBtn:FC<PropsWithChildren<ParamsBtn>> = ({children, isActive}) => {
+const ParamsBtn:FC<PropsWithChildren<ParamsBtn>> = ({children, isActive, onClick}) => {
     return (
-        <button className={`${isActive ? styles.active : ""}${styles.params}`}>
+        <button onClick={onClick} className={`${isActive ? styles.active : ""}${styles.params}`}>
             {children}
         </button>
     );
