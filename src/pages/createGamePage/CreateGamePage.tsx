@@ -78,6 +78,7 @@ const CreateGamePage = () => {
             <PageContainerItem>
                 <h1>YOUR INVITE CODE</h1>
                 <p className={styles.invite__code}>INVITE CODE <FontAwesomeIcon icon={faCopy}/></p>
+                <div></div>
             </PageContainerItem>
 
             <div className={styles.__blank}></div>
