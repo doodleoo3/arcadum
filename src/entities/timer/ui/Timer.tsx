@@ -40,9 +40,14 @@ const Timer:FC<TimerProps> = ({isOpponent}) => {
     }, [whiteTime, blackTime]);
 
     if (isOpponent) {
-        return <h3>{`${Math.floor(blackTime / 60)} : ${blackTime % 60 < 10 ? `0${blackTime % 60}` : blackTime % 60}`}</h3>
+        if (state.playerColor === "w") {
+            return <h3>{`${Math.floor(blackTime / 60)} : ${blackTime % 60 < 10 ? `0${blackTime % 60}` : blackTime % 60}`}</h3>
+        } else return <h3>{`${Math.floor(whiteTime / 60)} : ${whiteTime % 60 < 10 ? `0${whiteTime % 60}` : whiteTime % 60}`}</h3>
     }
-    return <h3>{`${Math.floor(whiteTime / 60)} : ${whiteTime % 60 < 10 ? `0${whiteTime % 60}` : whiteTime % 60}`}</h3>
+
+    return state.playerColor === "w"
+        ? <h3>{`${Math.floor(whiteTime / 60)} : ${whiteTime % 60 < 10 ? `0${whiteTime % 60}` : whiteTime % 60}`}</h3>
+        : <h3>{`${Math.floor(blackTime / 60)} : ${blackTime % 60 < 10 ? `0${blackTime % 60}` : blackTime % 60}`}</h3>
 
 };
 

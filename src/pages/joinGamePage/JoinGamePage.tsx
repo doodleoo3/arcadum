@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import Button from "../../shared/ui/button/Button";
 import PageContainerItem from "../../entities/pageContainerItem/PageContainerItem";
-import styles from "../gameOverPage/GameOverPage.module.scss";
+import styles from "./JoinGamePage.module.scss";
 import PageContainer from "../../shared/ui/pageContainer/PageContainer";
 import {useTelegram} from "../../shared/lib/hooks/useTelegram";
 
@@ -34,12 +33,16 @@ const JoinGamePage = () => {
         <PageContainer>
             <PageContainerItem>
                 <h1>JOIN THE GAME</h1>
-                <p>WITH YOUR FRIENDS</p>
+                {/*<p>GAME PARAMS:</p>*/}
+                {/*<p>TIME - </p>*/}
+                {/*<p>COST - </p>*/}
+                <p>WAITING FOR CODE</p>
             </PageContainerItem>
 
             <PageContainerItem>
                 <h1>ENTER THE INVITE CODE</h1>
                 <input className={styles.invite__code}></input>
+                <button className={styles.check__code}>CHECK CODE</button>
             </PageContainerItem>
 
             <div className={styles.__blank}></div>

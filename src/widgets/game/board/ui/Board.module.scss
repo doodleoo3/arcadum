@@ -1,3 +1,7 @@
+.boardWrapper {
+  position: relative;
+}
+
 .board {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
@@ -7,4 +11,37 @@
   height: 100vw;
   
   overflow: hidden;
+}
+
+.fileLabels {
+  bottom: -5px;
+  position: absolute;
+  display: flex;
+
+  justify-content: space-between;
+}
+
+.fileLabels>* {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: calc(100vw / 8);
+  font-size: 10px;
+  z-index: 999;
+
+  padding-right: 1px;
+}
+
+.rankLabels {
+  position: absolute;
+  top: -4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.rankLabels>* {
+  display: flex;
+  margin-left: 1px;
+  height: calc(100vw / 8);
 }

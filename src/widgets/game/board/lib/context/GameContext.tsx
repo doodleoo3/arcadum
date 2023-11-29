@@ -1,7 +1,16 @@
 import React, { createContext, useReducer, ReactNode } from 'react';
 import GameReducer from './GameReducer';
 import { GameState, GameAction } from './GameTypes'
+import {Color} from "chess.js";
 
+const choosePlayerColor = () : Color => {
+    const randomNum = Math.floor(Math.random() * 2) + 1;
+    if (randomNum === 1) {
+        return "w"
+    } else {
+        return "b"
+    }
+}
 
 const initialState: GameState = {
     possibleMoves: [],
@@ -13,7 +22,7 @@ const initialState: GameState = {
     playerName: '',
     opponentName: '',
 
-    playerColor: '',
+    playerColor: choosePlayerColor(),
     message: '',
 
     opponentMoves: [],

@@ -37,6 +37,7 @@ const CellPiece:FC<CellPieceProps> = ({name, pos, setFromPos, isPossibleMove}) =
 
     const handleClick = () => {
         setFromPos(pos);
+        console.log(pos)
     }
 
     return (

@@ -21,17 +21,17 @@ const GameOverPage = () => {
         }
     }, [state.status, state.turn]);
 
-    // const {tg, user} = useTelegram();
+    const {tg, user} = useTelegram();
 
-    // useEffect(() => {
-    //     tg.MainButton.setParams({
-    //         text: "PLAY AGAIN",
-    //         color: tg.themeParams.secondary_bg_color,
-    //         text_color: tg.themeParams.text_color,
-    //         is_active: true,
-    //         is_visible: true
-    //     })
-    // }, []);
+    useEffect(() => {
+        tg.MainButton.setParams({
+            text: "PLAY AGAIN",
+            color: tg.themeParams.secondary_bg_color,
+            text_color: tg.themeParams.text_color,
+            is_active: true,
+            is_visible: true
+        })
+    }, []);
 
     return (
         <PageContainer>
@@ -42,7 +42,7 @@ const GameOverPage = () => {
             </PageContainerItem>
 
             <PageContainerItem>
-                {/*<h1>@{user.username} WON FOR {winner ? winner?.toUpperCase() : localStorage.getItem('winner')}</h1>*/}
+                <h1>@{user.username} WON FOR {winner ? winner?.toUpperCase() : localStorage.getItem('winner')}</h1>
                 <p>YOU CAN START A NEW GAME BY CLICKING THE BUTTON BELOW</p>
             </PageContainerItem>
 

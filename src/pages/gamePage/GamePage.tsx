@@ -16,7 +16,8 @@ const GamePage = () => {
     const [fen, setFen] = useState('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1');
 
     const { current: chess } = useRef(new Chess(fen));
-    const [board, setBoard] = useState(createBoard(fen));
+
+    const [board, setBoard] = useState(createBoard(fen, state.playerColor));
 
     const fromPos = useRef<string>('');
     const { dispatch } = useContext(GameContext);
@@ -71,7 +72,8 @@ const GamePage = () => {
     }
 
     useEffect(() => {
-        setBoard(createBoard(fen));
+        setBoard(createBoard(fen, state.playerColor));
+        console.log(fen)
     }, [fen]);
 
     useEffect(() => {
@@ -125,6 +127,21 @@ const GamePage = () => {
             navigate("/game_over")
         }
     }, [state]);
+
+    // const choosePlayerColor = () => {
+    //     const randomNum = Math.floor(Math.random() * 2) + 1;
+    //     if (randomNum === 1) {
+    //         dispatch({ type: types.SET_PLAYER_COLOR, color: 'w'});
+    //     } else {
+    //         dispatch({ type: types.SET_PLAYER_COLOR, color: 'b'});
+    //     }
+    // }
+    //
+    // useEffect(() => {
+    //
+    //         choosePlayerColor()
+    //
+    // }, []);
 
 
     return (

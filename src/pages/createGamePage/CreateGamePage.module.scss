@@ -1,6 +1,22 @@
-.__blank {
+.params {
   width: 100vw;
-  height: 25vh;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.__blank {
+  height: 30vh;
+}
+
+
+.btn__container {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  justify-content: space-around;
 }
 
 .invite__code {

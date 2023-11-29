@@ -1,3 +1,5 @@
+import {Color} from "chess.js";
+
 export interface GameState {
     possibleMoves: string[];
     turn: 'w' | "b",
@@ -5,7 +7,7 @@ export interface GameState {
     gameOver: boolean,
     status: string,
     playerName: string,
-    playerColor: string,
+    playerColor: Color,
     opponentName: string,
     message: string,
     opponentMoves: string[],
@@ -17,7 +19,7 @@ export type GameAction =
     | { type: 'SET_TURN'; player: "w" | "b"; check: boolean}
     | {type: "GAME_OVER"; player: "w" | "b"; status: string}
     | {type: "SET_PLAYER"; name: string}
-    | {type: "SET_PLAYER_COLOR"; color: "w" | "b"}
+    | {type: "SET_PLAYER_COLOR"; color: Color}
     | {type: "SET_OPPONENT"; name: string}
     | {type: "SET_MESSAGE"; message: string}
     | {type: "CLEAR_MESSAGE";}
