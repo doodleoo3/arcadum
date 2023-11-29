@@ -114,6 +114,7 @@ const GamePage = () => {
     //         chess.move({ from, to });
     //         setFen(chess.fen());
     //     });
+
     //     socket.on('message', ({ message }) => {
     //         console.log({ message });
     //     });
@@ -127,22 +128,6 @@ const GamePage = () => {
             navigate("/game_over")
         }
     }, [state]);
-
-    // const choosePlayerColor = () => {
-    //     const randomNum = Math.floor(Math.random() * 2) + 1;
-    //     if (randomNum === 1) {
-    //         dispatch({ type: types.SET_PLAYER_COLOR, color: 'w'});
-    //     } else {
-    //         dispatch({ type: types.SET_PLAYER_COLOR, color: 'b'});
-    //     }
-    // }
-    //
-    // useEffect(() => {
-    //
-    //         choosePlayerColor()
-    //
-    // }, []);
-
 
     return (
         <GamePageContainer>

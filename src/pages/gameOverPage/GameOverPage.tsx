@@ -42,7 +42,7 @@ const GameOverPage = () => {
 
             <PageContainerItem>
                 <h1>@{user.username} WON FOR {winner ? winner?.toUpperCase() : localStorage.getItem('winner')}</h1>
-                <p>THE FUNDS FOR THE CHESS GAME IN THE AMOUNT OF {`AMOUNT`} $SOL HAVE ALREADY BEEN SENT TO THE WINNER</p>
+                <p>{`<AMOUNT>`}$SOL HAVE ALREADY BEEN SENT TO THE WINNER</p>
             </PageContainerItem>
 
             <PageContainerItem>
