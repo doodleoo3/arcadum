@@ -43,7 +43,8 @@ const CreateGamePage = () => {
     return (
         <PageContainer>
             <PageContainerItem>
-                <h1>CREATE A NEW GAME</h1>
+                <div className={styles.title__wrapper}><h1>CREATE A NEW GAME</h1></div>
+
                 <div className={styles.params}>
                     <p>SELECT GAME TIME:</p>
                     <div className={styles.btn__container}>
@@ -57,8 +58,8 @@ const CreateGamePage = () => {
                             </ParamsBtn>
                         ))}
                     </div>
-
                 </div>
+
                 <div className={styles.params}>
                     <p>SELECT GAME COST:</p>
                     <div className={styles.btn__container}>
@@ -76,8 +77,8 @@ const CreateGamePage = () => {
             </PageContainerItem>
 
             <PageContainerItem>
-                <h1>YOUR INVITE CODE</h1>
-                <p className={styles.invite__code}>INVITE CODE <FontAwesomeIcon icon={faCopy}/></p>
+                <div className={styles.title__wrapper}><h1>YOUR INVITE CODE</h1></div>
+                <div><p className={styles.invite__code}>INVITE CODE <FontAwesomeIcon icon={faCopy}/></p></div>
                 <div></div>
             </PageContainerItem>
 
