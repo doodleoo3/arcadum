@@ -29,7 +29,7 @@
   font-size: 10px;
   z-index: 999;
 
-  color: var(--tg-theme-text-color);
+  //color: var(--tg-theme-text-color);
 
   padding-right: 1px;
 
@@ -54,10 +54,18 @@
 
   z-index: 999;
 
-  color: var(--tg-theme-text-color);
+  //color: var(--tg-theme-text-color);
 
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.light__rank, .light__file {
+
+}
+
+.dark__rank, .dark__file {
+
 }

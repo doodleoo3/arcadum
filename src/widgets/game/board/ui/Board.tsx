@@ -21,12 +21,18 @@ const Board:FC<BoardProps> = ({board, makeMove, setFromPos, selectedCell}) => {
         <div className={styles.fileLabels}>
             {state.playerColor === "b"
                 ?
-                <>{files.reverse().map((file) => (
-                    <div key={file}>{file}</div>
+                <>{files.reverse().map((file, index) => (
+                    <div
+                        key={file}
+                        className={index % 2 === 0 ? styles.dark__file : ''}
+                    >{file}</div>
                 ))}</>
                 :
-                <>{files.map((file) => (
-                    <div key={file}>{file}</div>
+                <>{files.map((file, index) => (
+                    <div
+                        key={file}
+                        className={index % 2 === 0 ? styles.light__file : ''}
+                    >{file}</div>
                 ))}</>
             }
         </div>
@@ -36,15 +42,20 @@ const Board:FC<BoardProps> = ({board, makeMove, setFromPos, selectedCell}) => {
         <div className={styles.rankLabels}>
             {state.playerColor === "b"
                 ?
-                <>{ranks.map((rank) => (
-                    <div key={rank}>{rank}</div>
+                <>{ranks.map((rank, index) => (
+                    <div
+                        key={rank}
+                        className={index % 2 === 0 ? styles.dark__rank : ''}
+                    >{rank}</div>
                 ))}</>
                 :
-                <>{ranks.reverse().map((rank) => (
-                    <div key={rank}>{rank}</div>
+                <>{ranks.reverse().map((rank, index) => (
+                    <div
+                        key={rank}
+                        className={index % 2 === 0 ? styles.dark__file : ''}
+                    >{rank}</div>
                 ))}</>
             }
-
         </div>
     );
 
