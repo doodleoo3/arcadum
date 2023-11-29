@@ -16,11 +16,9 @@ interface CellProps {
 }
 const Cell:FC<CellProps> = ({cell, index, setFromPos, makeMove}) => {
     const light = isLightSquare(cell.pos, index);
-
-    const { state }  = useContext(GameContext);
-
+    const {state}  = useContext(GameContext);
+    const {tg} = useTelegram()
     const isPossibleMove = state.possibleMoves.includes(cell.pos);
-
     const color = cell.piece.toUpperCase() === cell.piece ? 'w' : 'b';
 
     const inCheck = () => {
@@ -35,8 +33,6 @@ const Cell:FC<CellProps> = ({cell, index, setFromPos, makeMove}) => {
     const handleClick = () => {
         makeMove(cell.pos);
     };
-
-    const {tg} = useTelegram()
 
     return (
         <div

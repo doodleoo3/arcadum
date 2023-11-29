@@ -29,6 +29,8 @@
   font-size: 10px;
   z-index: 999;
 
+  color: var(--tg-theme-text-color);
+
   padding-right: 1px;
 
   -webkit-user-select: none;
@@ -51,6 +53,8 @@
   height: calc(100vw / 8);
 
   z-index: 999;
+
+  color: var(--tg-theme-text-color);
 
   -webkit-user-select: none;
   -moz-user-select: none;

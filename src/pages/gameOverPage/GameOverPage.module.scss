@@ -2,3 +2,22 @@
   width: 100vw;
   height: 25vh;
 }
+
+.new__game__btn {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.new__game__btn>button {
+  width: 50%;
+  padding: 5px 10px;
+  border-radius: 15px;
+  background-color: var(--tg-theme-button-color);
+  color: var(--tg-theme-text-color);
+  border: 1px solid var(--tg-theme-text-color);
+
+  cursor: pointer;
+}

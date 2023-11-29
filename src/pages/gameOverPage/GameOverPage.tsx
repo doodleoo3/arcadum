@@ -25,9 +25,7 @@ const GameOverPage = () => {
 
     useEffect(() => {
         tg.MainButton.setParams({
-            text: "PLAY AGAIN",
-            color: tg.themeParams.secondary_bg_color,
-            text_color: tg.themeParams.text_color,
+            text: "REMATCH",
             is_active: true,
             is_visible: true
         })
@@ -46,7 +44,14 @@ const GameOverPage = () => {
                 <p>YOU CAN START A NEW GAME BY CLICKING THE BUTTON BELOW</p>
             </PageContainerItem>
 
-            <div className={styles.__blank}></div>
+            <PageContainerItem>
+                <div className={styles.new__game__btn}>
+                    <button></button>
+                    <button></button>
+                </div>
+            </PageContainerItem>
+
+            {/*<div className={styles.__blank}></div>*/}
         </PageContainer>
     );
 };
