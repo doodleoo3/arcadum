@@ -9,18 +9,18 @@ import ParamsBtn from "../../shared/ui/paramsBtn/ParamsBtn";
 const CreateGamePage = () => {
     const {tg} = useTelegram();
 
-    const [selectedTime, setSelectedTime] = useState<number | null>(null);
-    const [selectedCost, setSelectedCost] = useState<number | null>(null);
-
-    useEffect(() => {
-        tg.MainButton.setParams({
-            text: "INVITE FRIENDS",
-            color: tg.themeParams.secondary_bg_color,
-            text_color: tg.themeParams.text_color,
-            is_active: true,
-            is_visible: true
-        })
-    }, []);
+    const [selectedTime, setSelectedTime] = useState<number>(300);
+    const [selectedCost, setSelectedCost] = useState<number>(5);
+    const [gameCode, setGameCode] = useState(generateUniqueCode)
+    function generateUniqueCode() {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
+        const charactersLength = characters.length;
+        for (let i = 0; i < 16; i++) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    }
 
     const handleTimeSelect = (time: number) => {
         setSelectedTime(time);
@@ -29,6 +29,11 @@ const CreateGamePage = () => {
     const handleCostSelect = (cost: number) => {
         setSelectedCost(cost);
     };
+
+    useEffect(() => {
+        setGameCode(generateUniqueCode)
+        // handleSubmit()
+    }, [selectedTime, selectedCost]);
 
     // const handleSubmit = () => {
     //     // Логика отправки данных на сервер
@@ -39,6 +44,14 @@ const CreateGamePage = () => {
     //     };
     //     // Отправка данных gameData на сервер
     // };
+
+    useEffect(() => {
+        tg.MainButton.setParams({
+            text: "INVITE FRIENDS",
+            is_active: true,
+            is_visible: true
+        })
+    }, []);
 
     return (
         <PageContainer>
@@ -78,11 +91,15 @@ const CreateGamePage = () => {
 
             <PageContainerItem>
                 <div className={styles.title__wrapper}><h1>YOUR INVITE CODE</h1></div>
-                <div><p className={styles.invite__code}>INVITE CODE <FontAwesomeIcon icon={faCopy}/></p></div>
+                <div className={styles.invite__wrapper}><p className={styles.invite__code}>{gameCode} <FontAwesomeIcon icon={faCopy}/></p></div>
                 <div></div>
             </PageContainerItem>
 
-            <div className={styles.__blank}></div>
+
+            <PageContainerItem>
+                <h1>WAITING FOR SECOND PLAYER...</h1>
+            </PageContainerItem>
+            {/*<div className={styles.__blank}></div>*/}
         </PageContainer>
     );
 };

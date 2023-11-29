@@ -11,7 +11,7 @@
   height: 30vh;
 }
 
-.title__wrapper {
+.title__wrapper, .invite__wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,7 +33,7 @@
   align-items: center;
   justify-content: center;
 
-  background-color: var(--tg-theme-bg-color);
+  background-color: var(--tg-theme-button-color);
   text-align: center;
 
   border-width: 1px 0 1px 0;
