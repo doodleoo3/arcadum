@@ -1,11 +1,13 @@
 .check__code {
-  padding: 0 10px;
+  padding: 5px 10px;
   border-radius: 15px;
   color: var(--tg-theme-button-text-color);
   background-color: var(--tg-theme-button-color);
   border: 1px solid var(--tg-theme-text-color);
   cursor: pointer;
 }
+
+
 
 .join__wrapper {
   display: flex;
@@ -14,7 +16,7 @@
   justify-content: center;
 }
 
-.title__wrapper, .invite__wrapper{
+.title__wrapper, .invite__wrapper, .get_code__wrapper {
   display: flex;
   align-items: center;
   justify-content: center;

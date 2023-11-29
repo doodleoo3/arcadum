@@ -35,10 +35,10 @@ const JoinGamePage = () => {
     return (
         <PageContainer>
             <PageContainerItem>
-                <h1 className={styles.title__wrapper}>JOIN THE GAME</h1>
+                <div className={styles.title__wrapper}><h1>JOIN THE GAME</h1></div>
 
                 <div className={styles.join__wrapper}>
-                    <p>WAITING FOR CODE</p>
+                    <p>WAITING FOR NETWORK PARAMS</p>
                     {/*<p>GAME PARAMS:</p>*/}
                     {/*<p>OPPONENT - </p>*/}
                     {/*<p>TIME - </p>*/}
@@ -51,7 +51,7 @@ const JoinGamePage = () => {
             <PageContainerItem>
                 <div className={styles.title__wrapper}><h1>ENTER THE INVITE CODE</h1></div>
                 <div className={styles.invite__wrapper}><input ref={inputRef} type="text" className={styles.invite__code}></input></div>
-                <div><button className={styles.check__code}>GET NETWORK PARAMS</button></div>
+                <div className={styles.get_code__wrapper}><button className={styles.check__code}>GET NETWORK PARAMS</button></div>
             </PageContainerItem>
 
             <div className={styles.__blank}></div>
