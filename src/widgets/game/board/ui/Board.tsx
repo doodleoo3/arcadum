@@ -24,14 +24,14 @@ const Board:FC<BoardProps> = ({board, makeMove, setFromPos, selectedCell}) => {
                 <>{files.reverse().map((file, index) => (
                     <div
                         key={file}
-                        className={index % 2 === 0 ? styles.dark__file : ''}
+                        className={index % 2 === 0 ? styles.dark__file : styles.light__file}
                     >{file}</div>
                 ))}</>
                 :
                 <>{files.map((file, index) => (
                     <div
                         key={file}
-                        className={index % 2 === 0 ? styles.light__file : ''}
+                        className={index % 2 === 0 ? styles.light__file : styles.dark__file}
                     >{file}</div>
                 ))}</>
             }
@@ -45,14 +45,14 @@ const Board:FC<BoardProps> = ({board, makeMove, setFromPos, selectedCell}) => {
                 <>{ranks.map((rank, index) => (
                     <div
                         key={rank}
-                        className={index % 2 === 0 ? styles.light__rank : ''}
+                        className={index % 2 === 0 ? styles.light__rank : styles.light__rank}
                     >{rank}</div>
                 ))}</>
                 :
                 <>{ranks.reverse().map((rank, index) => (
                     <div
                         key={rank}
-                        className={index % 2 === 0 ? styles.dark__rank : ''}
+                        className={index % 2 === 0 ? styles.dark__rank : styles.dark__rank}
                     >{rank}</div>
                 ))}</>
             }
