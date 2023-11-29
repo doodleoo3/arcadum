@@ -46,8 +46,8 @@ const GameOverPage = () => {
 
             <PageContainerItem>
                 <div className={styles.new__game__btn}>
-                    <button></button>
-                    <button></button>
+                    <button>CREATE A NEW GAME</button>
+                    <button>JOIN A NEW GAME</button>
                 </div>
             </PageContainerItem>
 
