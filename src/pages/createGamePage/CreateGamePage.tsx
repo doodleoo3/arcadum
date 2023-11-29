@@ -66,7 +66,7 @@ const CreateGamePage = () => {
                             <ParamsBtn
                                 key={cost}
                                 onClick={() => handleCostSelect(cost)}
-                                isActive={selectedTime === cost}
+                                isActive={selectedCost === cost}
                             >
                                 {cost + "$"}
                             </ParamsBtn>
