@@ -22,8 +22,6 @@ const JoinGamePage = () => {
     useEffect(() => {
         tg.MainButton.setParams({
             text: "JOIN GAME",
-            color: tg.themeParams.secondary_bg_color,
-            text_color: tg.themeParams.text_color,
             is_active: true,
             is_visible: true
         })
@@ -32,17 +30,22 @@ const JoinGamePage = () => {
     return (
         <PageContainer>
             <PageContainerItem>
-                <h1>JOIN THE GAME</h1>
-                {/*<p>GAME PARAMS:</p>*/}
-                {/*<p>TIME - </p>*/}
-                {/*<p>COST - </p>*/}
-                <p>WAITING FOR CODE</p>
+                <h1 className={styles.title__wrapper}>JOIN THE GAME</h1>
+
+                <div>
+                    <p>WAITING FOR CODE</p>
+                    {/*<p>GAME PARAMS:</p>*/}
+                    {/*<p>TIME - </p>*/}
+                    {/*<p>COST - </p>*/}
+                </div>
+                
+                <div></div>
             </PageContainerItem>
 
             <PageContainerItem>
-                <h1>ENTER THE INVITE CODE</h1>
-                <input className={styles.invite__code}></input>
-                <button className={styles.check__code}>CHECK CODE</button>
+                <div className={styles.title__wrapper}><h1>ENTER THE INVITE CODE</h1></div>
+                <div className={styles.invite__wrapper}><input className={styles.invite__code}></input></div>
+                <div><button className={styles.check__code}>GET NETWORK PARAMS</button></div>
             </PageContainerItem>
 
             <div className={styles.__blank}></div>
