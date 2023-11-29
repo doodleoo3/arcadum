@@ -17,7 +17,6 @@ interface CellProps {
 const Cell:FC<CellProps> = ({cell, index, setFromPos, makeMove}) => {
     const light = isLightSquare(cell.pos, index);
     const {state}  = useContext(GameContext);
-    const {tg} = useTelegram()
     const isPossibleMove = state.possibleMoves.includes(cell.pos);
     const color = cell.piece.toUpperCase() === cell.piece ? 'w' : 'b';
 
@@ -36,13 +35,7 @@ const Cell:FC<CellProps> = ({cell, index, setFromPos, makeMove}) => {
 
     return (
         <div
-            className={`${styles.cell} 
-            ${tg.colorScheme === "light" 
-                ? 
-                light ? styles.dark : styles.light
-                :
-                light ? styles.light : styles.dark
-            }`}
+            className={`${styles.cell} ${light ? styles.light : styles.dark}`}
             onClick={handleClick}
             onDrop={handleDrop}
             onDragOver={(e) => e.preventDefault()}

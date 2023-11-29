@@ -4,10 +4,13 @@ import {GameContext} from "../../widgets/game/board/lib/context/GameContext";
 import PageContainerItem from "../../entities/pageContainerItem/PageContainerItem";
 import PageContainer from "../../shared/ui/pageContainer/PageContainer";
 import {useTelegram} from "../../shared/lib/hooks/useTelegram";
+import {useNavigate} from "react-router-dom";
 const GameOverPage = () => {
     const {state} = useContext(GameContext)
-
     const [winner, setWinner] = useState<string | null>(null)
+    const {tg, user} = useTelegram();
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (state.status === 'checkmate') {
@@ -20,8 +23,6 @@ const GameOverPage = () => {
             }
         }
     }, [state.status, state.turn]);
-
-    const {tg, user} = useTelegram();
 
     useEffect(() => {
         tg.MainButton.setParams({
@@ -41,13 +42,13 @@ const GameOverPage = () => {
 
             <PageContainerItem>
                 <h1>@{user.username} WON FOR {winner ? winner?.toUpperCase() : localStorage.getItem('winner')}</h1>
-                <p>YOU CAN START A NEW GAME BY CLICKING THE BUTTON BELOW</p>
+                <p>THE FUNDS FOR THE CHESS GAME IN THE AMOUNT OF {`AMOUNT`} $SOL HAVE ALREADY BEEN SENT TO THE WINNER</p>
             </PageContainerItem>
 
             <PageContainerItem>
                 <div className={styles.new__game__btn}>
-                    <button>CREATE A NEW GAME</button>
-                    <button>JOIN A NEW GAME</button>
+                    <button onClick={() => navigate("/create")}>CREATE A NEW GAME</button>
+                    <button onClick={() => navigate("/join")}>JOIN A NEW GAME</button>
                 </div>
             </PageContainerItem>
 
