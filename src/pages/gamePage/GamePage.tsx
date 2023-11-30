@@ -56,7 +56,7 @@ const GamePage = () => {
                     // socket.emit('move', { gameID: '20', from, to: pos });
                 }
             } catch (e) {
-
+                console.log(e)
             }
         }
     };
