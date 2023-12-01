@@ -6,12 +6,20 @@ import {faCopy} from "@fortawesome/free-regular-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import PageContainerItem from "../../entities/pageContainerItem/PageContainerItem";
 import ParamsBtn from "../../shared/ui/paramsBtn/ParamsBtn";
+import {useSolPrice} from "../../shared/lib/hooks/useSolPrice";
 const CreateGamePage = () => {
     const {tg} = useTelegram();
 
     const [selectedTime, setSelectedTime] = useState<number>(300);
-    const [selectedCost, setSelectedCost] = useState<number>(5);
+    const [selectedCost, setSelectedCost] = useState<string>("5");
     const [gameCode, setGameCode] = useState(generateUniqueCode)
+    const [solPrice, setSolPrice] = useState<number | null>(null)
+
+
+    useSolPrice().then(res => setSolPrice(res))
+    // useEffect(() => {
+    //     // console.log(solPrice)
+    // }, [solPrice]);
     function generateUniqueCode() {
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         let result = '';
@@ -26,7 +34,7 @@ const CreateGamePage = () => {
         setSelectedTime(time);
     };
 
-    const handleCostSelect = (cost: number) => {
+    const handleCostSelect = (cost: string) => {
         setSelectedCost(cost);
     };
 
@@ -76,13 +84,13 @@ const CreateGamePage = () => {
                 <div className={styles.params}>
                     <p>SELECT GAME COST:</p>
                     <div className={styles.btn__container}>
-                        {[1, 5, 10].map(cost => (
+                        {[`1$ ≈ ${solPrice ? (1 / solPrice).toFixed(2) + "$SOL" : "LOADING..."}`, `5$ ≈ ${solPrice ? (5 / solPrice).toFixed(2) + "$SOL" : "LOADING..."}`, `10$ ≈ ${solPrice ? (10 / solPrice).toFixed(2) + "$SOL" : "LOADING..."}`].map(cost => (
                             <ParamsBtn
                                 key={cost}
                                 onClick={() => handleCostSelect(cost)}
                                 isActive={selectedCost === cost}
                             >
-                                {cost + "$"}
+                                {cost}
                             </ParamsBtn>
                         ))}
                     </div>

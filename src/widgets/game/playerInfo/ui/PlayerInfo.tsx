@@ -9,24 +9,24 @@ interface PlayerInfoProps {
 }
 
 const PlayerInfo:FC<PlayerInfoProps> = ({isOpponent, playerName, lastMatches}) => {
-    // const {tg, user} = useTelegram()
+    const {tg, user} = useTelegram()
     const [avatar, setAvatar] = useState('');
 
-    // useEffect(() => {
-    //     if (tg.colorScheme === "light") {
-    //         setAvatar("/assets/images/no-avatar-black.png")
-    //
-    //     } else {
-    //         setAvatar("/assets/images/no-avatar-white.png")
-    //     }
-    // }, [tg]);
+    useEffect(() => {
+        if (tg.colorScheme === "light") {
+            setAvatar("/assets/images/no-avatar-black.png")
+
+        } else {
+            setAvatar("/assets/images/no-avatar-white.png")
+        }
+    }, [tg]);
 
     return (
         <div className={`${styles.player__info} ${isOpponent ? styles.opponent : ""}`}>
             <div className={styles.top__side__wrapper}>
                 <div className={styles.player__info__wrapper}>
-                    {/*<img className={styles.avatar} src={user.photo_url ? user.photo_url : avatar} alt=""/>*/}
-                    {/*<h3>@{user.username}</h3>*/}
+                    <img className={styles.avatar} src={user.photo_url ? user.photo_url : avatar} alt=""/>
+                    <h3>@{user.username}</h3>
                 </div>
                 {isOpponent
                     ? <Timer isOpponent={isOpponent}/>

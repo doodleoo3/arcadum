@@ -36,12 +36,19 @@ const GameOverPage = () => {
         <PageContainer>
             <PageContainerItem>
                 <h1>GAME OVER</h1>
-
-                <p>THE GAME ENDED IN A {localStorage.getItem('status') ? localStorage.getItem('status') : state.status}</p>
+                {state.status === 'draw'
+                    ?
+                    <>DRAW</>
+                    :
+                    <>
+                        <p>@{user.username} WON PLAYING FOR <span style={winner === "white" ? {color: "white"} : {color: "black"}}>{winner ? winner?.toUpperCase() : localStorage.getItem('winner')}</span></p>
+                        <p>{localStorage.getItem('status') ? localStorage.getItem('status') : state.status}</p>
+                    </>
+                }
             </PageContainerItem>
 
             <PageContainerItem>
-                <h1>@{user.username} WON FOR {winner ? winner?.toUpperCase() : localStorage.getItem('winner')}</h1>
+                <h1>REWARD</h1>
                 <p>{`<AMOUNT>`}$SOL HAVE ALREADY BEEN SENT TO THE WINNER</p>
             </PageContainerItem>
 
@@ -51,8 +58,6 @@ const GameOverPage = () => {
                     <button onClick={() => navigate("/join")}>JOIN A NEW GAME</button>
                 </div>
             </PageContainerItem>
-
-            {/*<div className={styles.__blank}></div>*/}
         </PageContainer>
     );
 };

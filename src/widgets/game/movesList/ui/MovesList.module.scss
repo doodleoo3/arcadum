@@ -3,7 +3,6 @@
   height: 20px;
   display: flex;
   background-color: var(--tg-theme-secondary-bg-color);
-  //border-top: 1px solid var(--tg-theme-text-color);
   overflow-x: auto;
   overflow-y: hidden;
 
@@ -17,9 +16,11 @@
 .sidebar p {
   display: flex;
   align-items: center;
+  white-space: nowrap;
   margin: 0 10px;
 }
 
 .sidebar p span {
+  white-space: nowrap;
   margin-right: 15px;
 }

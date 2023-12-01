@@ -5,7 +5,7 @@ import PageContainer from "../../shared/ui/pageContainer/PageContainer";
 import {useTelegram} from "../../shared/lib/hooks/useTelegram";
 
 const JoinGamePage = () => {
-    const [name, setName] = useState(''); // ИМЯ БУДЕТ БРАТЬСЯ ИЗ TELEGRAM'A
+    const [name, setName] = useState('');
     const [gameID, setGameID] = useState('');
 
     const {tg} = useTelegram();

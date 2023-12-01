@@ -35,7 +35,7 @@ const Timer:FC<TimerProps> = ({isOpponent}) => {
 
     useEffect(() => {
         if (whiteTime === 0 || blackTime === 0) {
-            dispatch({ type: types.GAME_OVER, status: 'end of time', player: state.turn });
+            dispatch({ type: types.GAME_OVER, status: 'time', player: state.turn });
         }
     }, [whiteTime, blackTime]);
 

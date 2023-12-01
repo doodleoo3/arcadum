@@ -5,7 +5,6 @@ import styles from "./Cell.module.scss"
 import CellPiece from "../../cellPiece/ui/CellPiece";
 import {Square} from "chess.js";
 import {GameContext} from "../../board/lib/context/GameContext";
-import {useTelegram} from "../../../../shared/lib/hooks/useTelegram";
 
 interface CellProps {
     cell: CellModel
