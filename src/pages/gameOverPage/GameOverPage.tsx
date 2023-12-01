@@ -36,7 +36,7 @@ const GameOverPage = () => {
         <PageContainer>
             <PageContainerItem>
                 <h1>GAME OVER</h1>
-                {state.status === 'draw'
+                {state.status === 'draw' || state.status === 'stalemate'
                     ?
                     <>DRAW</>
                     :
@@ -49,7 +49,11 @@ const GameOverPage = () => {
 
             <PageContainerItem>
                 <h1>REWARD</h1>
-                <p>{`<AMOUNT>`}$SOL HAVE ALREADY BEEN SENT TO THE WINNER</p>
+                {state.status === 'draw' || state.status === 'stalemate'
+                    ? <p>{`<AMOUNT>`}$SOL REMAINS IN YOUR WALLET</p>
+                    : <p>{`<AMOUNT>`}$SOL HAVE ALREADY BEEN SENT TO THE WINNER</p>
+                }
+
             </PageContainerItem>
 
             <PageContainerItem>
