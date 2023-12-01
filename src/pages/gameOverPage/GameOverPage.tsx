@@ -38,7 +38,7 @@ const GameOverPage = () => {
                 <h1>GAME OVER</h1>
                 {state.status === 'draw' || state.status === 'stalemate'
                     ?
-                    <>DRAW</>
+                    <>{localStorage.getItem('status') ? localStorage.getItem('status') : state.status}</>
                     :
                     <>
                         <p>@{user.username} WON PLAYING FOR <span style={winner === "white" ? {color: "white"} : {color: "black"}}>{winner ? winner?.toUpperCase() : localStorage.getItem('winner')}</span></p>
@@ -53,7 +53,6 @@ const GameOverPage = () => {
                     ? <p>{`<AMOUNT>`}$SOL REMAINS IN YOUR WALLET</p>
                     : <p>{`<AMOUNT>`}$SOL HAVE ALREADY BEEN SENT TO THE WINNER</p>
                 }
-
             </PageContainerItem>
 
             <PageContainerItem>
