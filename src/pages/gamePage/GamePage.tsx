@@ -13,7 +13,7 @@ import {useNavigate} from 'react-router-dom';
 
 const GamePage = () => {
     const { state} = useContext(GameContext)
-    const [fen, setFen] = useState('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1');
+    const [fen, setFen] = useState('4k3/4P3/4K3/8/8/8/8/8 b - - 0 78');
 
     const { current: chess } = useRef(new Chess(fen));
 
