@@ -8,6 +8,7 @@ const Header = () => {
         <div className={styles.header}>
             <img className={styles.logo} src={tg.colorScheme === "light" ? "/assets/images/logo-black.png" : "/assets/images/logo-white.png"} alt=""/>
             <h1>ARCADUM</h1>
+            <div className={styles.__blank}></div>
         </div>
     );
 };

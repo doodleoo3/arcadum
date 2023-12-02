@@ -17,8 +17,13 @@
   justify-content: center;
 }
 
-.logo {
-  height: 100%;
+.header>h1 {
+  width: 50%;
+}
+
+.logo, .__blank {
+  width: 25%;
+  height: 90%;
 }
 
 .navigation {
