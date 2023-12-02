@@ -13,12 +13,11 @@
 
 .header>* {
   display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .header>h1 {
   width: 50%;
+  text-align: center;
 }
 
 .logo, .__blank {
