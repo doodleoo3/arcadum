@@ -42,7 +42,7 @@ const GameOverPage = () => {
                     :
                     <>
                         <p>@{user.username} WON PLAYING FOR {winner ? winner?.toUpperCase() : localStorage.getItem('winner')}</p>
-                        <p>{localStorage.getItem('status') ? localStorage.getItem('status') : state.status}</p>
+                        <p>REASON: {localStorage.getItem('status') ? localStorage.getItem('status') : state.status}</p>
                     </>
                 }
             </PageContainerItem>
