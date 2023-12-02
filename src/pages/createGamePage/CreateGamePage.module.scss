@@ -7,6 +7,8 @@
   justify-content: space-around;
 }
 
+
+
 .__blank {
   height: 30vh;
 }
@@ -23,6 +25,31 @@
   width: 100vw;
   justify-content: space-around;
 }
+
+.create__lobby__wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.create__lobby__wrapper>p {
+  color: red;
+}
+
+.create__lobby {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 80%;
+  height: 60px;
+
+  border: 1px solid black;
+  margin-bottom: 10px;
+}
+
 
 .invite__code {
   position: relative;

@@ -2,33 +2,39 @@ import React, {useEffect, useState} from 'react';
 import PageContainer from "../../shared/ui/pageContainer/PageContainer";
 import {useTelegram} from "../../shared/lib/hooks/useTelegram";
 import styles from "./CreateGamePage.module.scss"
-import {faCopy} from "@fortawesome/free-regular-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import PageContainerItem from "../../entities/pageContainerItem/PageContainerItem";
 import ParamsBtn from "../../shared/ui/paramsBtn/ParamsBtn";
-import {useSolPrice} from "../../shared/lib/hooks/useSolPrice";
+import axios from "axios";
+import Lobby from "../../entities/lobby/Lobby";
+import {useSearchParams} from "react-router-dom";
+
+interface ISolPriceRequest {
+    solana: {
+        usd: number
+    }
+}
+
 const CreateGamePage = () => {
-    const {tg} = useTelegram();
+    // const {tg} = useTelegram();
+
+    const [searchParams] = useSearchParams();
+
+    const token = searchParams.get('token');
+
+    useEffect(() => {
+        if (token) {
+            localStorage.setItem('token', token);
+        }
+    }, [token]);
 
     const [selectedTime, setSelectedTime] = useState<number>(300);
     const [selectedCost, setSelectedCost] = useState<number>(5);
-    const [gameCode, setGameCode] = useState(generateUniqueCode)
+
+    const [isEnoughSol, setIsEnoughSol] = useState<boolean>(true)
+    const [isLobbyCreated, setIsLobbyCreated] = useState<boolean>(false)
+    const [isLobbyDeleted, setIsLobbyDeleted] = useState<boolean>(false)
+
     const [solPrice, setSolPrice] = useState<number | null>(null)
-
-
-    useSolPrice().then(res => setSolPrice(res))
-    // useEffect(() => {
-    //     // console.log(solPrice)
-    // }, [solPrice]);
-    function generateUniqueCode() {
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        let result = '';
-        const charactersLength = characters.length;
-        for (let i = 0; i < 16; i++) {
-            result += characters.charAt(Math.floor(Math.random() * charactersLength));
-        }
-        return result;
-    }
 
     const handleTimeSelect = (time: number) => {
         setSelectedTime(time);
@@ -38,27 +44,44 @@ const CreateGamePage = () => {
         setSelectedCost(cost);
     };
 
-    useEffect(() => {
-        setGameCode(generateUniqueCode)
-        // handleSubmit()
-    }, [selectedTime, selectedCost]);
+    const handleIsLobbyDeleted = (isDeleted: boolean) => {
+        setIsLobbyDeleted(isDeleted);
+    };
 
-    // const handleSubmit = () => {
-    //     // Логика отправки данных на сервер
-    //     const gameData = {
-    //         time: selectedTime,
-    //         cost: selectedCost,
-    //         // ... другие данные ...
-    //     };
-    //     // Отправка данных gameData на сервер
-    // };
+    const handleCreateLobby = () => {
+            axios.post('http://65.109.160.222:3000/create', {
+                // bet: solPrice && (selectedCost / solPrice).toFixed(2),
+                bet: 0.001,
+                time: selectedTime
+            }, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                }
+            }).then(res => {
+                setIsEnoughSol(true)
+                setIsLobbyCreated(true)
+            }).catch(error => setIsEnoughSol(false))
+    }
 
     useEffect(() => {
-        tg.MainButton.setParams({
-            text: "INVITE FRIENDS",
-            is_active: true,
-            is_visible: true
+        const solPriceRequest = axios.get<ISolPriceRequest>("https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd")
+        try {
+            solPriceRequest.then(res => {
+                setSolPrice(res.data.solana.usd)
+            })
+        } catch (e) {
+            setSolPrice(null)
+        }
+    }, []);
+
+    useEffect(() => {
+        const gameIsExistRequest = axios.get("http://65.109.160.222:3000/game", {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
         })
+        gameIsExistRequest.then(res => {
+            res.headers["content-length"] !== "0" ? setIsLobbyCreated(true) : setIsLobbyCreated(false)}).catch(error => setIsLobbyCreated(false))
     }, []);
 
     return (
@@ -84,7 +107,7 @@ const CreateGamePage = () => {
                 <div className={styles.params}>
                     <p>SELECT GAME COST:</p>
                     <div className={styles.btn__container}>
-                        {[1, 5, 10].map(cost => (
+                        {[1, 3, 5].map(cost => (
                             <ParamsBtn
                                 key={cost}
                                 onClick={() => handleCostSelect(cost)}
@@ -98,16 +121,27 @@ const CreateGamePage = () => {
             </PageContainerItem>
 
             <PageContainerItem>
-                <div className={styles.title__wrapper}><h1>YOUR INVITE CODE</h1></div>
-                <div className={styles.invite__wrapper}><p className={styles.invite__code}>{gameCode} <FontAwesomeIcon icon={faCopy}/></p></div>
-                <div></div>
+                <div className={styles.create__lobby__wrapper}>
+                    {isLobbyCreated && !isLobbyDeleted
+                        ?
+                        <Lobby lobbyName={""} bet={solPrice ? (selectedCost / solPrice).toFixed(2) : 0} time={selectedTime / 60} handleIsLobbyDeleted={handleIsLobbyDeleted} status="delete"/>
+                        :
+                        <>
+                            <button onClick={handleCreateLobby} className={styles.create__lobby}>CREATE LOBBY</button>
+                            {!isEnoughSol && <p>YOU DONT HAVE ENOUGH $SOL ON YOUR WALLET</p>}
+                        </>
+                    }
+                </div>
             </PageContainerItem>
 
-
-            <PageContainerItem>
-                <h1>WAITING FOR SECOND PLAYER...</h1>
-            </PageContainerItem>
-            {/*<div className={styles.__blank}></div>*/}
+            {isLobbyCreated
+                ?
+                <PageContainerItem>
+                    <h1>WAITING FOR SECOND PLAYER...</h1>
+                </PageContainerItem>
+                :
+                <div className={styles.__blank}></div>
+            }
         </PageContainer>
     );
 };
