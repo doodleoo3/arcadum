@@ -11,7 +11,7 @@ const CreateGamePage = () => {
     const {tg} = useTelegram();
 
     const [selectedTime, setSelectedTime] = useState<number>(300);
-    const [selectedCost, setSelectedCost] = useState<string>("5");
+    const [selectedCost, setSelectedCost] = useState<number>(5);
     const [gameCode, setGameCode] = useState(generateUniqueCode)
     const [solPrice, setSolPrice] = useState<number | null>(null)
 
@@ -34,7 +34,7 @@ const CreateGamePage = () => {
         setSelectedTime(time);
     };
 
-    const handleCostSelect = (cost: string) => {
+    const handleCostSelect = (cost: number) => {
         setSelectedCost(cost);
     };
 
@@ -84,13 +84,13 @@ const CreateGamePage = () => {
                 <div className={styles.params}>
                     <p>SELECT GAME COST:</p>
                     <div className={styles.btn__container}>
-                        {[`1$ ≈ ${solPrice ? (1 / solPrice).toFixed(2) + "$SOL" : "LOADING..."}`, `5$ ≈ ${solPrice ? (5 / solPrice).toFixed(2) + "$SOL" : "LOADING..."}`, `10$ ≈ ${solPrice ? (10 / solPrice).toFixed(2) + "$SOL" : "LOADING..."}`].map(cost => (
+                        {[1, 5, 10].map(cost => (
                             <ParamsBtn
                                 key={cost}
                                 onClick={() => handleCostSelect(cost)}
                                 isActive={selectedCost === cost}
                             >
-                                {cost}
+                                {`${cost}$ ≈ ${solPrice ? (1 / solPrice).toFixed(2) + "$SOL" : "LOADING..."}`}
                             </ParamsBtn>
                         ))}
                     </div>
