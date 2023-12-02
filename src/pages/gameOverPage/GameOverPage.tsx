@@ -41,7 +41,7 @@ const GameOverPage = () => {
                     <>{localStorage.getItem('status') ? localStorage.getItem('status') : state.status}</>
                     :
                     <>
-                        <p>@{user.username} WON PLAYING FOR <span style={winner === "w" ? {color: "white"} : {color: "black"}}>{winner ? winner?.toUpperCase() : localStorage.getItem('winner')}</span></p>
+                        <p>@{user.username} WON PLAYING FOR {winner ? winner?.toUpperCase() : localStorage.getItem('winner')}</p>
                         <p>{localStorage.getItem('status') ? localStorage.getItem('status') : state.status}</p>
                     </>
                 }
