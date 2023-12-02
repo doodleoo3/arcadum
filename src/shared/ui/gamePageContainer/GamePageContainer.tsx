@@ -5,7 +5,7 @@ const GamePageContainer:FC<React.PropsWithChildren> = ({children}) => {
     const {tg} = useTelegram()
 
     return (
-        <section className={styles.container} style={tg.colorScheme === "light" ? {backgroundImage: `url("/assets/images/arcadum-bg-light.png")`} : {backgroundImage: `url("/assets/images/arcadum-bg-black.png")`}}>
+        <section className={styles.container} style={tg.colorScheme === "light" ? {backgroundImage: `url("/assets/images/arcadum-bg-white.png")`} : {backgroundImage: `url("/assets/images/arcadum-bg-black.png")`}}>
             {children}
         </section>
     );
