@@ -6,7 +6,9 @@ const Header = () => {
 
     return (
         <div className={styles.header}>
-            <img className={styles.logo} src={tg.colorScheme === "light" ? "/assets/images/logo-black.png" : "/assets/images/logo-white.png"} alt=""/>
+            <div className={styles.logo}>
+                <img src={tg.colorScheme === "light" ? "/assets/images/logo-black.png" : "/assets/images/logo-white.png"} alt=""/>
+            </div>
             <h1>ARCADUM</h1>
             <div className={styles.__blank}></div>
         </div>
