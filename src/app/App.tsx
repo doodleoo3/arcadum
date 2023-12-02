@@ -16,7 +16,7 @@ function App() {
 
     return (
             <GameProvider>
-                <div className="App" style={tg.colorScheme === "light" ? {backgroundImage: `url("/assets/images/arcadum-bg-white.png")`} : {backgroundImage: `url("/assets/images/arcadum-bg-black.png")`}}>
+                <div className="App" style={tg.colorScheme === "light" ? {backgroundImage: `url("/assets/images/arcadum-bg-light.png")`} : {backgroundImage: `url("/assets/images/arcadum-bg-dark.png")`}}>
                     <Header/>
                     <AppRouter/>
                 </div>
