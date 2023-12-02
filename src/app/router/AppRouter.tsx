@@ -10,10 +10,10 @@ const AppRouter = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/app/game_over" element={<GameOverPage/>} />
-                <Route path="/app/create" element={<CreateGamePage/>} />
-                <Route path="/app/game" element={<GamePage/>} />
-                <Route path="/app/lobbies" element={<LobbyPage/>}/>
+                <Route path="/game_over" element={<GameOverPage/>} />
+                <Route path="/create" element={<CreateGamePage/>} />
+                <Route path="/game" element={<GamePage/>} />
+                <Route path="/lobbies" element={<LobbyPage/>}/>
             </Routes>
         </BrowserRouter>
     );
