@@ -16,16 +16,15 @@ function App() {
 
     useEffect(() => {
         if (tg.colorScheme === "light") {
-            setBgImage("/assets/images/arcadum-bg-black.png")
-
+            setBgImage("/assets/images/arcadum-bg-light.png")
         } else {
-            setBgImage("/assets/images/arcadum-bg-white.png")
+            setBgImage("/assets/images/arcadum-bg-black.png")
         }
     }, [tg]);
 
     return (
             <GameProvider>
-                <div className="App" style={tg.colorScheme === "light" ? {backgroundImage: `url(${bgImage})`} : {backgroundImage: `url(${bgImage})`}}>
+                <div className="App" style={tg.colorScheme === "light" && bgImage ? {backgroundImage: `url(${bgImage})`} : {backgroundImage: `url(${bgImage})`}}>
                     <Header/>
                     <AppRouter/>
                 </div>
