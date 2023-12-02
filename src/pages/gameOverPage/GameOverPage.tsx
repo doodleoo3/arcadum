@@ -53,6 +53,7 @@ const GameOverPage = () => {
                     ? <p>{`<AMOUNT>`}$SOL REMAINS IN YOUR WALLET</p>
                     : <p>{`<AMOUNT>`}$SOL HAVE ALREADY BEEN SENT TO THE WINNER</p>
                 }
+                <div></div>
             </PageContainerItem>
 
             <PageContainerItem>
