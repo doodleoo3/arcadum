@@ -16,6 +16,9 @@
 }
 
 .header>h1 {
+  display: flex;
+  align-self: center;
+  justify-content: center;
   width: 50%;
   text-align: center;
 }
