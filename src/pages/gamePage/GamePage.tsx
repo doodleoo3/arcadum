@@ -10,6 +10,7 @@ import {types} from "../../widgets/game/board/lib/context/GameTypes";
 import {getGameOverState} from "../../widgets/game/board/lib/gameOver";
 import GamePageFooter from "../../widgets/footer/ui/gamePageFooter/GamePageFooter";
 import {useNavigate} from 'react-router-dom';
+import {useTelegram} from "../../shared/lib/hooks/useTelegram";
 
 const GamePage = () => {
     const { state} = useContext(GameContext)
@@ -25,6 +26,8 @@ const GamePage = () => {
     const [selectedCell, setSelectedCell] = useState<Square | null>(null);
 
     const [moveHistory, setMoveHistory] = useState<Array<{ white: string, black: string | null }>>([]);
+
+    const navigate = useNavigate()
 
     // const socket = io('localhost:5000');
 
@@ -120,7 +123,6 @@ const GamePage = () => {
     //     });
     // }, [chess]);
 
-    const navigate = useNavigate()
 
     useEffect(() => {
         if (state.gameOver) {

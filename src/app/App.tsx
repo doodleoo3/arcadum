@@ -7,24 +7,16 @@ import AppRouter from "./router/AppRouter";
 
 function App() {
     const {tg} = useTelegram()
-    const [bgImage, setBgImage] = useState<string | null>(null);
 
     useEffect(() => {
         tg.ready();
         tg.expand()
     }, []);
 
-    useEffect(() => {
-        if (tg.colorScheme === "light") {
-            setBgImage("/assets/images/arcadum-bg-light.png")
-        } else {
-            setBgImage("/assets/images/arcadum-bg-black.png")
-        }
-    }, [tg]);
 
     return (
             <GameProvider>
-                <div className="App" style={tg.colorScheme === "light" && bgImage ? {backgroundImage: `url(${bgImage})`} : {backgroundImage: `url(${bgImage})`}}>
+                <div className="App" style={tg.colorScheme === "light" ? {backgroundImage: `url("/assets/images/arcadum-bg-light.png")`} : {backgroundImage: `url("/assets/images/arcadum-bg-black.png")`}}>
                     <Header/>
                     <AppRouter/>
                 </div>
