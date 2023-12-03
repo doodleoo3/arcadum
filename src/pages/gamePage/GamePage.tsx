@@ -39,7 +39,7 @@ const GamePage = () => {
                 .post(
                     'https://www.malccement.ru/game',
                     {
-                        gameUuid: state.gameUuid,
+                        gameUuid: state.gameUuid || undefined,
                     },
                     {
                         headers: {
@@ -58,6 +58,7 @@ const GamePage = () => {
 
                     dispatch({ type: types.SET_PLAYER, name: data.players[0].user.name });
                     dispatch({ type: types.SET_OPPONENT, name: data.players[1].user.name });
+                    dispatch({ type: types.SET_GAME_UUID, uuid: data.uuid });
 
                     if (data.status === 'finished') {
                         navigate('/game_over');
