@@ -19,7 +19,7 @@ const GamePage = () => {
 
     const { current: chess } = useRef(new Chess(fen));
 
-    const [board, setBoard] = useState(createBoard(fen, state.playerColor));
+    const [board, setBoard] = useState(createBoard(fen, state.myTurn));
 
     const fromPos = useRef<string>('');
 
@@ -120,9 +120,9 @@ const GamePage = () => {
     };
 
     useEffect(() => {
-        setBoard(createBoard(fen, state.playerColor));
+        setBoard(createBoard(fen, state.myTurn));
         console.log(fen);
-    }, [fen]);
+    }, [fen, state.myTurn]);
 
     useEffect(() => {
         const [gameOver, status] = getGameOverState(chess);
