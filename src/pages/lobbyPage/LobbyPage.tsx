@@ -59,18 +59,21 @@ const LobbyPage = () => {
     }
   }, []);
 
-  console.log(games?.length);
 
   return (
     <LobbyContainer>
       {games ? (
-        <>
-          {games.map((game) => (
-            <Lobby key={game.uuid} lobbyName={game.name} bet={game.bet} time={game.time} gameUuid={game.uuid} status="join" />
-          ))}
-        </>
+          games.length > 0
+              ?
+              <>
+                {games.map((game) => (
+                    <Lobby key={game.uuid} lobbyName={game.name} bet={game.bet} time={game.time} gameUuid={game.uuid} status="join" />
+                ))}
+              </>
+              :
+              <p>LOBBIES NOT FOUND</p>
       ) : (
-        <>LOBBIES NOT FOUND</>
+        <p>LOBBIES NOT FOUND</p>
       )}
     </LobbyContainer>
   );
