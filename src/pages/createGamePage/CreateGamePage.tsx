@@ -27,7 +27,7 @@ const CreateGamePage = () => {
     }
   }, [token]);
 
-  const [selectedTime, setSelectedTime] = useState<number>(300);
+  const [selectedTime, setSelectedTime] = useState<number>(600);
   const [selectedCost, setSelectedCost] = useState<number>(5);
 
   const [isEnoughSol, setIsEnoughSol] = useState<boolean>(true);
@@ -106,7 +106,7 @@ const CreateGamePage = () => {
         <div className={styles.params}>
           <p>SELECT GAME TIME:</p>
           <div className={styles.btn__container}>
-            {[60, 300, 600].map((time) => (
+            {[300, 600, 900].map((time) => (
               <ParamsBtn key={time} onClick={() => handleTimeSelect(time)} isActive={selectedTime === time}>
                 {time / 60 + ":00"}
               </ParamsBtn>
@@ -117,9 +117,9 @@ const CreateGamePage = () => {
         <div className={styles.params}>
           <p>SELECT GAME COST:</p>
           <div className={styles.btn__container}>
-            {[1, 3, 5].map((cost) => (
+            {[0, 0.5, 1].map((cost) => (
               <ParamsBtn key={cost} onClick={() => handleCostSelect(cost)} isActive={selectedCost === cost}>
-                {`${cost}$ ≈ ${solPrice ? (1 / solPrice).toFixed(2) + "$SOL" : "LOADING..."}`}
+                {`${solPrice ? (1 / solPrice).toFixed(3) + " SOL" : "LOADING..."}`}
               </ParamsBtn>
             ))}
           </div>
