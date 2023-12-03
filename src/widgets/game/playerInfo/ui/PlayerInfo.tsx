@@ -25,7 +25,7 @@ const PlayerInfo: FC<PlayerInfoProps> = ({ isOpponent, playerName, lastMatches }
       <div className={styles.top__side__wrapper}>
         <div className={styles.player__info__wrapper}>
           {/* <img className={styles.avatar} src={user.photo_url ? user.photo_url : avatar} alt=""/> */}
-          <h3>@{user.username}</h3>
+          {/* <h3>@{user.username}</h3> */}
         </div>
         {isOpponent ? <Timer isOpponent={isOpponent} /> : <Timer />}
       </div>
