@@ -41,6 +41,7 @@ const GamePage = () => {
                     const data = result.data;
                     const gamePlayer = data.players[0];
 
+                    chess.load(data.fen);
                     setFen(data.fen);
                     dispatch({ type: types.SET_TURN, player: data.turn, check: false });
                     dispatch({ type: types.SET_MY_TURN, player: gamePlayer.side });
