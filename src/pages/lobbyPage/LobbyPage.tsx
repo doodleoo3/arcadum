@@ -4,7 +4,7 @@ import axios from "axios";
 import Lobby from "../../entities/lobby/Lobby";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import LobbyContainer from "../../entities/lobbyContainer/LobbyContainer";
-
+import styles from "./LobbyPage.module.scss"
 interface IGame {
   uuid: string;
   name: string;
@@ -71,9 +71,9 @@ const LobbyPage = () => {
                 ))}
               </>
               :
-              <p>LOBBIES NOT FOUND</p>
+              <h1 className={styles.not__found}>LOBBIES NOT FOUND</h1>
       ) : (
-        <p>LOBBIES NOT FOUND</p>
+        <h1 className={styles.not__found}>LOBBIES NOT FOUND</h1>
       )}
     </LobbyContainer>
   );
