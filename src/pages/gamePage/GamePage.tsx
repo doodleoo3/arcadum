@@ -30,37 +30,6 @@ const GamePage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const ws = new WebSocket(`wss://www.malccement.ru?token=${localStorage.getItem('token')}`);
-
-        ws.onopen = () => {
-            console.log('WebSocket соединение установлено');
-        };
-
-        ws.onmessage = (event) => {
-            const data = event.data;
-            const params = data.params;
-
-            if (data.action === 'update') {
-                setFen(params.fen);
-                dispatch({ type: types.SET_TURN, player: params.turn, check: params.check });
-                dispatch({ type: types.SET_MY_TURN, player: params.myTurn });
-            }
-        };
-
-        ws.onerror = (error) => {
-            console.error('WebSocket ошибка:', error);
-        };
-
-        ws.onclose = () => {
-            console.log('WebSocket соединение закрыто');
-        };
-
-        return () => {
-            ws.close();
-        };
-    }, [dispatch]);
-
-    useEffect(() => {
         const interval = setInterval(async () => {
             await axios
                 .get('https://www.malccement.ru/game', {
@@ -70,12 +39,12 @@ const GamePage = () => {
                 })
                 .then((result) => {
                     const data = result.data;
-                    const params = data.params;
+                    const gamePlayer = data.players[0];
 
                     if (data.action === 'update') {
-                        setFen(params.fen);
-                        dispatch({ type: types.SET_TURN, player: params.turn, check: params.check });
-                        dispatch({ type: types.SET_MY_TURN, player: params.myTurn });
+                        setFen(data.fen);
+                        dispatch({ type: types.SET_TURN, player: data.turn, check: false });
+                        dispatch({ type: types.SET_MY_TURN, player: gamePlayer.side });
                     }
                 })
                 .catch((error) => {
