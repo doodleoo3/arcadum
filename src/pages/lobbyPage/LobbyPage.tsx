@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import PageContainer from "../../shared/ui/pageContainer/PageContainer";
 import axios from "axios";
 import Lobby from "../../entities/lobby/Lobby";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import LobbyContainer from "../../entities/lobbyContainer/LobbyContainer";
 
 interface IGame {
   uuid: string;
   name: string;
+  status: string;
   bet: number;
   time: number;
   createdAt: string;
@@ -15,6 +16,8 @@ interface IGame {
 
 const LobbyPage = () => {
   const [searchParams] = useSearchParams();
+  const [shouldRedirect, setShouldRedirect] = useState(false);
+  const navigate = useNavigate();
 
   const token = searchParams.get("token");
 
@@ -25,6 +28,23 @@ const LobbyPage = () => {
   }, [token]);
 
   const [games, setGames] = useState<[IGame] | null>(null);
+
+  useEffect(() => {
+    const gameResponse = axios.get<IGame>("https://www.malccement.ru/game", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    try {
+      gameResponse.then((res) => setShouldRedirect(res.data.status === "in_progress"));
+    } catch (e) {}
+  }, []);
+
+  useEffect(() => {
+    if (shouldRedirect) {
+      navigate("/game");
+    }
+  }, [shouldRedirect, navigate]);
 
   useEffect(() => {
     const gamesResponse = axios.get<[IGame]>("https://www.malccement.ru/games", {

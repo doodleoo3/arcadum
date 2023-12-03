@@ -29,7 +29,6 @@ const GamePage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Создание нового WebSocket-соединения
     const ws = new WebSocket(`wss://www.malccement.ru/game?token=${localStorage.getItem("token")}`);
 
     ws.onopen = () => {
@@ -55,11 +54,10 @@ const GamePage = () => {
       console.log("WebSocket соединение закрыто");
     };
 
-    // Закрытие WebSocket при размонтировании компонента
     return () => {
       ws.close();
     };
-  }, []);
+  }, [dispatch]);
 
   // const socket = io('localhost:5000');
 
