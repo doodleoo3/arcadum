@@ -29,7 +29,7 @@ const GamePage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const ws = new WebSocket(`wss://www.malccement.ru/game?token=${localStorage.getItem("token")}`);
+    const ws = new WebSocket(`wss://www.malccement.ru?token=${localStorage.getItem("token")}`);
 
     ws.onopen = () => {
       console.log("WebSocket соединение установлено");
