@@ -47,11 +47,14 @@
   height: 60px;
 
   background-color: var(--tg-theme-button-color);
+  color: var(--tg-theme-text-color);
 
   border-radius: 10px;
 
   border: 1px solid var(--tg-theme-text-color);
   margin-bottom: 10px;
+
+  cursor: pointer;
 }
 
 

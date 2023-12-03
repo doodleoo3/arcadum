@@ -31,7 +31,7 @@ const GameOverPage = () => {
             .then((result) => {
                 const data = result.data;
                 setBet(data.bet);
-                setWinner(data.winner)
+                setWinner(data.winner.name)
 
                 // if (data.winner.side === 'w') {
                 //     setWinner('white');

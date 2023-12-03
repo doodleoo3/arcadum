@@ -84,7 +84,7 @@ const CreateGamePage = () => {
                 'https://www.malccement.ru/create',
                 {
                     // bet: solPrice && (selectedCost / solPrice).toFixed(2),
-                    bet: 0.0001,
+                    bet: selectedCost,
                     time: selectedTime,
                 },
                 {
