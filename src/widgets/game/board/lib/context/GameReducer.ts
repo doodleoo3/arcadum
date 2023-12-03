@@ -50,6 +50,8 @@ const GameReducer = (state: GameState, action: GameAction): GameState => {
             return { ...state, myTurn: action.player };
         case types.SET_BLOCKED:
             return { ...state, isBlocked: action.flag };
+        case types.SET_GAME_UUID:
+            return { ...state, gameUuid: action.uuid };
 
         default:
             return state;

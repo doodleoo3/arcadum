@@ -36,11 +36,17 @@ const GamePage = () => {
             }
 
             await axios
-                .get('https://www.malccement.ru/game', {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem('token')}`,
+                .post(
+                    'https://www.malccement.ru/game',
+                    {
+                        gameUuid: state.gameUuid,
                     },
-                })
+                    {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem('token')}`,
+                        },
+                    },
+                )
                 .then((result) => {
                     const data = result.data;
                     const gamePlayer = data.players[0];
