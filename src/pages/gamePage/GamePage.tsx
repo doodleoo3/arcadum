@@ -45,6 +45,9 @@ const GamePage = () => {
                     setFen(data.fen);
                     dispatch({ type: types.SET_TURN, player: data.turn, check: false });
                     dispatch({ type: types.SET_MY_TURN, player: gamePlayer.side });
+
+                    dispatch({ type: types.SET_PLAYER, name: data.players[0].user.name });
+                    dispatch({ type: types.SET_OPPONENT, name: data.players[1].user.name });
                 })
                 .catch((error) => {
                     console.log(error);
