@@ -1,3 +1,7 @@
 .not__found {
-  margin: 50px 20px 0 20px;
+  margin: 50px 20px 10px 20px;
+}
+
+.not__found+a {
+  color: var(--tg-theme-text-color);
 }
