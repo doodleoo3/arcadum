@@ -105,7 +105,6 @@ const GamePage = () => {
     const setFromPos = (pos: Square) => {
         fromPos.current = pos;
         const moves = chess.moves({ square: pos });
-
         const piece = chess.get(pos);
 
         console.log(state.turn, state.myTurn, piece.color);
@@ -113,6 +112,8 @@ const GamePage = () => {
         if (state.turn !== state.myTurn || piece.color !== state.myTurn) {
             return;
         }
+
+        console.log(moves);
 
         dispatch({
             type: types.SET_POSSIBLE_MOVES,
