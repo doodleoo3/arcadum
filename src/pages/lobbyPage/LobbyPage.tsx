@@ -71,9 +71,15 @@ const LobbyPage = () => {
                 ))}
               </>
               :
-              <h1 className={styles.not__found}>LOBBIES NOT FOUND</h1>
+              <>
+                <h1 className={styles.not__found}>LOBBIES NOT FOUND</h1>
+                <a href="">CREATE GAME</a>
+              </>
       ) : (
-        <h1 className={styles.not__found}>LOBBIES NOT FOUND</h1>
+          <>
+            <h1 className={styles.not__found}>LOBBIES NOT FOUND</h1>
+            <a href="">CREATE GAME</a>
+          </>
       )}
     </LobbyContainer>
   );
