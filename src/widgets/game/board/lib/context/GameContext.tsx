@@ -20,6 +20,7 @@ const initialState: GameState = {
     gameOver: false,
     status: '',
     isBlocked: false,
+    gameUuid: '',
 
     playerName: '',
     opponentName: '',

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PageContainer from '../../shared/ui/pageContainer/PageContainer';
 import { useTelegram } from '../../shared/lib/hooks/useTelegram';
 import styles from './CreateGamePage.module.scss';
@@ -7,6 +7,8 @@ import ParamsBtn from '../../shared/ui/paramsBtn/ParamsBtn';
 import axios from 'axios';
 import Lobby from '../../entities/lobby/Lobby';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { types } from '../../widgets/game/board/lib/context/GameTypes';
+import { GameContext } from '../../widgets/game/board/lib/context/GameContext';
 
 interface ISolPriceRequest {
     solana: {
@@ -39,13 +41,19 @@ const CreateGamePage = () => {
 
     const [solPrice, setSolPrice] = useState<number | null>(null);
 
+    const { dispatch } = useContext(GameContext);
+
     useEffect(() => {
         setInterval(() => {
-            const gameResponse = axios.get('https://www.malccement.ru/game', {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+            const gameResponse = axios.post(
+                'https://www.malccement.ru/game',
+                {},
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`,
+                    },
                 },
-            });
+            );
             try {
                 gameResponse.then((res) => setShouldRedirect(res.data.status === 'in_progress'));
             } catch (e) {}
@@ -86,6 +94,8 @@ const CreateGamePage = () => {
                 },
             )
             .then((res) => {
+                dispatch({ type: types.SET_GAME_UUID, uuid: res.data.uuid });
+
                 setIsEnoughSol(true);
                 setIsLobbyCreated(true);
             })
@@ -106,11 +116,15 @@ const CreateGamePage = () => {
     }, []);
 
     useEffect(() => {
-        const gameIsExistRequest = axios.get('https://www.malccement.ru/game', {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('token')}`,
+        const gameIsExistRequest = axios.post(
+            'https://www.malccement.ru/game',
+            {},
+            {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                },
             },
-        });
+        );
         gameIsExistRequest
             .then((res) => {
                 res.headers['content-length'] !== '0' ? setIsLobbyCreated(true) : setIsLobbyCreated(false);

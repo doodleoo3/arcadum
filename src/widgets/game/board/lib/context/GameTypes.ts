@@ -13,6 +13,7 @@ export interface GameState {
     message: string;
     opponentMoves: string[];
     isBlocked: boolean;
+    gameUuid: string;
 }
 
 export type GameAction =
@@ -28,7 +29,8 @@ export type GameAction =
     | { type: 'SET_OPPONENT_MOVES'; moves: string[] }
     | { type: 'CLEAR_OPPONENT_MOVES' }
     | { type: 'SET_MY_TURN'; player: 'w' | 'b' }
-    | { type: 'SET_BLOCKED'; flag: boolean };
+    | { type: 'SET_BLOCKED'; flag: boolean }
+    | { type: 'SET_GAME_UUID'; uuid: string };
 
 export const types = {
     SET_POSSIBLE_MOVES: 'SET_POSSIBLE_MOVES',
@@ -45,4 +47,5 @@ export const types = {
     CLEAR_OPPONENT_MOVES: 'CLEAR_OPPONENT_MOVES',
     SET_MY_TURN: 'SET_MY_TURN',
     SET_BLOCKED: 'SET_BLOCKED',
+    SET_GAME_UUID: 'SET_GAME_UUID',
 } as const;
