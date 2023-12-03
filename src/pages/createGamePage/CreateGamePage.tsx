@@ -186,7 +186,7 @@ const CreateGamePage = () => {
                 <div className={styles.create__lobby__wrapper}>
                     {isLobbyCreated && !isLobbyDeleted ? (
                         <Lobby
-                            lobbyName={`@${user.username}`}
+                            lobbyName={`${user.username}`}
                             bet={solPrice ? (selectedCost / solPrice).toFixed(2) : 0}
                             time={selectedTime / 60}
                             handleIsLobbyDeleted={handleIsLobbyDeleted}
