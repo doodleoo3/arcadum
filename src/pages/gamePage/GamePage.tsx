@@ -108,12 +108,12 @@ const GamePage = () => {
         const piece = chess.get(pos);
 
         console.log(state.turn, state.myTurn, piece.color);
+        console.log(moves);
+        console.log(pos);
 
         if (state.turn !== state.myTurn || piece.color !== state.myTurn) {
             return;
         }
-
-        console.log(moves);
 
         dispatch({
             type: types.SET_POSSIBLE_MOVES,
