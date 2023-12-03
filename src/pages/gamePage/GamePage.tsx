@@ -31,6 +31,10 @@ const GamePage = () => {
 
     useEffect(() => {
         const interval = setInterval(async () => {
+            if (state.isBlocked) {
+                return;
+            }
+
             await axios
                 .get('https://www.malccement.ru/game', {
                     headers: {
@@ -87,18 +91,22 @@ const GamePage = () => {
                     setSelectedCell(null);
                     // socket.emit('move', { gameID: '20', from, to: pos });
 
-                    axios.post(
-                        'https://www.malccement.ru/makeTurn',
-                        {
-                            from,
-                            to,
-                        },
-                        {
-                            headers: {
-                                Authorization: `Bearer ${localStorage.getItem('token')}`,
+                    dispatch({ type: types.SET_BLOCKED, flag: true });
+
+                    axios
+                        .post(
+                            'https://www.malccement.ru/makeTurn',
+                            {
+                                from,
+                                to,
                             },
-                        },
-                    );
+                            {
+                                headers: {
+                                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                                },
+                            },
+                        )
+                        .finally(() => dispatch({ type: types.SET_BLOCKED, flag: false }));
                 }
             } catch (e) {
                 console.log(e);
