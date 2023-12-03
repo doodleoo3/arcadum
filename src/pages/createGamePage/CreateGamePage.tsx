@@ -148,7 +148,7 @@ const CreateGamePage = () => {
                                 onClick={() => handleTimeSelect(time)}
                                 isActive={selectedTime === time}
                             >
-                                {time / 60 + ':00'}
+                                {(time / 60) + ':00'}
                             </ParamsBtn>
                         ))}
                     </div>
@@ -158,13 +158,23 @@ const CreateGamePage = () => {
                     <p>SELECT GAME COST:</p>
                     <div className={styles.btn__container}>
                         {[0, 0.5, 1].map((cost) => (
-                            <ParamsBtn
-                                key={cost}
-                                onClick={() => handleCostSelect(cost)}
-                                isActive={selectedCost === cost}
-                            >
-                                {`${solPrice ? (1 / solPrice).toFixed(3) + ' SOL' : 'LOADING...'}`}
-                            </ParamsBtn>
+                            cost === 0
+                                ? <ParamsBtn
+                                    key={cost}
+                                    onClick={() => handleCostSelect(cost)}
+                                    isActive={selectedCost === cost}
+                                >
+                                  {`0 SOL`}
+                                </ParamsBtn>
+
+                                : <ParamsBtn
+                                    key={cost}
+                                    onClick={() => handleCostSelect(cost)}
+                                    isActive={selectedCost === cost}
+                                >
+                                  {`${solPrice ? (cost / solPrice).toFixed(3) + ' SOL' : 'LOADING...'}`}
+                                </ParamsBtn>
+
                         ))}
                     </div>
                 </div>

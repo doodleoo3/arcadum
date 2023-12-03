@@ -30,33 +30,33 @@ const GameOverPage = () => {
             )
             .then((result) => {
                 const data = result.data;
-
                 setBet(data.bet);
+                setWinner(data.winner)
 
-                if (data.winner.side === 'w') {
-                    setWinner('white');
-                    localStorage.setItem('winner', 'white');
-                } else {
-                    setWinner('black');
-                    localStorage.setItem('winner', 'black');
-                }
+                // if (data.winner.side === 'w') {
+                //     setWinner('white');
+                //     localStorage.setItem('winner', 'white');
+                // } else {
+                //     setWinner('black');
+                //     localStorage.setItem('winner', 'black');
+                // }
             })
             .catch((error) => {
                 console.log(error);
             });
     });
 
-    useEffect(() => {
-        if (state.status === 'checkmate') {
-            if (state.turn === 'b') {
-                setWinner('white');
-                localStorage.setItem('winner', 'white');
-            } else {
-                setWinner('black');
-                localStorage.setItem('winner', 'black');
-            }
-        }
-    }, [state.status, state.turn]);
+    // useEffect(() => {
+    //     if (state.status === 'checkmate') {
+    //         if (state.turn === 'b') {
+    //             setWinner('white');
+    //             localStorage.setItem('winner', 'white');
+    //         } else {
+    //             setWinner('black');
+    //             localStorage.setItem('winner', 'black');
+    //         }
+    //     }
+    // }, [state.status, state.turn]);
 
     return (
         <PageContainer>
@@ -67,10 +67,11 @@ const GameOverPage = () => {
                 ) : (
                     <>
                         <p>
-                            @{user.username} WON PLAYING FOR{' '}
-                            {winner ? winner?.toUpperCase() : localStorage.getItem('winner')}
+                            @{winner} WON PLAYING FOR {state.turn === "w" ? <span>BLACK</span> : <span>WHITE</span>}
+                            {/*{winner ? winner?.toUpperCase() : localStorage.getItem('winner')}*/}
                         </p>
-                        <p>REASON: {localStorage.getItem('status') ? localStorage.getItem('status') : state.status}</p>
+                        <p>REASON: CHECKMATE</p>
+                        {/*<p>REASON: {localStorage.getItem('status') ? localStorage.getItem('status') : state.status}</p>*/}
                     </>
                 )}
             </PageContainerItem>
