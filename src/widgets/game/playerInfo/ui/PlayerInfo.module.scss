@@ -1,7 +1,6 @@
 .player__info {
   position: relative;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 
@@ -19,13 +18,14 @@
   width: 100%;
   height: 100%;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .top__side__wrapper>* {
   background-color: #409d7e;
   padding: 5px 10px;
   border-radius: 10px;
+  margin: 0 20px;
 }
 
 .player__info__wrapper {
