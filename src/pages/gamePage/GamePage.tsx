@@ -41,11 +41,9 @@ const GamePage = () => {
                     const data = result.data;
                     const gamePlayer = data.players[0];
 
-                    if (data.action === 'update') {
-                        setFen(data.fen);
-                        dispatch({ type: types.SET_TURN, player: data.turn, check: false });
-                        dispatch({ type: types.SET_MY_TURN, player: gamePlayer.side });
-                    }
+                    setFen(data.fen);
+                    dispatch({ type: types.SET_TURN, player: data.turn, check: false });
+                    dispatch({ type: types.SET_MY_TURN, player: gamePlayer.side });
                 })
                 .catch((error) => {
                     console.log(error);
