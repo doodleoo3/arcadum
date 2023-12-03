@@ -43,8 +43,6 @@ const CreateGamePage = () => {
 
     const { dispatch } = useContext(GameContext);
 
-    const { dispatch } = useContext(GameContext);
-
     useEffect(() => {
         setInterval(() => {
             const gameResponse = axios.post(
