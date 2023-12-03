@@ -52,6 +52,10 @@ const GamePage = () => {
 
                     dispatch({ type: types.SET_PLAYER, name: data.players[0].user.name });
                     dispatch({ type: types.SET_OPPONENT, name: data.players[1].user.name });
+
+                    if (data.status === 'finished') {
+                        navigate('/game_over');
+                    }
                 })
                 .catch((error) => {
                     console.log(error);

@@ -6,7 +6,7 @@ import PageContainerItem from '../../entities/pageContainerItem/PageContainerIte
 import ParamsBtn from '../../shared/ui/paramsBtn/ParamsBtn';
 import axios from 'axios';
 import Lobby from '../../entities/lobby/Lobby';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 interface ISolPriceRequest {
     solana: {
@@ -20,6 +20,9 @@ const CreateGamePage = () => {
     const [searchParams] = useSearchParams();
 
     const token = searchParams.get('token');
+
+    const [shouldRedirect, setShouldRedirect] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (token) {
@@ -35,6 +38,25 @@ const CreateGamePage = () => {
     const [isLobbyDeleted, setIsLobbyDeleted] = useState<boolean>(false);
 
     const [solPrice, setSolPrice] = useState<number | null>(null);
+
+    useEffect(() => {
+        setInterval(() => {
+            const gameResponse = axios.get('https://www.malccement.ru/game', {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                },
+            });
+            try {
+                gameResponse.then((res) => setShouldRedirect(res.data.status === 'in_progress'));
+            } catch (e) {}
+        }, 300);
+    }, []);
+
+    useEffect(() => {
+        if (shouldRedirect) {
+            navigate('/game');
+        }
+    }, [shouldRedirect, navigate]);
 
     const handleTimeSelect = (time: number) => {
         setSelectedTime(time);
